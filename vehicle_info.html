@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta  content="text/html; charset=windows-1252"  http-equiv="content-type">
+    <meta  name="viewport"  content="width=device-width, initial-scale=1.0">
+
+    <script src="js/d3.min.js"></script>
+    <link  rel="stylesheet"  type="text/css"  href="css/bootstrap.css">
+    <link  rel="stylesheet"  type="text/css"  href="css/site_specific.css">
+
+    <title>TGVelo kwaliteitslabel</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <nav class="col-sm-3">
+      <ul class="nav nav-pills nav-stacked" id="menu">
+        <li><a  class="sectionTitle"  href="index.html">Home Page</a></li>
+      </ul>
+    </nav>
+
+    <div class="col-sm-9">
+      <!-- Webpage main content -->
+      <h1>Vehicle information</h1>
+
+      <h2>Name of the producer or importer</h2>
+
+      <p>The entity who is final responsible for the warranty of the vehicle as a whole.</p>
+
+      <h2>Model name</h2>
+
+      <p>The name of the model. This reflects the unique description of frame and every component of the vehicle as it can be found in the construction dossier. This implies that the existence of a construction dossier is compulsory if the TGVelo label is used. This can be the same dossier that goes with the CE label.</p>
+
+      <h2>Type of vehicle</h2>
+
+      <p>In Belgium and many other European countries, these electric cycle types are possible</p>
+
+      <ul>
+      <li>Moped class A or B</li>
+      <li>Speed pedelec</li>
+      <li>Pedelec</li>
+      <li>Propelled device</li>
+      <li>Slow cycle (max design speed 6 kph)</li>
+      <li>Vehicle for physically handicapped</li>
+      <li>Vehicle for pedestrian control</li>
+      <li>Race vehicle (exclusively intended for racing)</li>
+      <li>Special service vehicle (army, fire brigade, police,&hellip;)</li>
+      <li>Agricultural or forestry vehicle</li>
+      <li>Mountain vehicle (primarily intended for off road)</li>
+      <li>Self-balancing vehicle</li>
+      <li>Vehicle without a seating position</li>
+      <li>Moped with low R-point</li>
+      </ul>
+
+      <p>The definitions of these vehicles can be found in the European Regulation No 168/2013 and local legislation.</p>
+
+      <h2>Design speed</h2>
+
+      <p>Design speed is the speed reached by the electric cycle when pedalling in standard conditions, with a human input of 100 W and the maximum assistance of the motor. It might be expressed for the maximum assistance mode, some modes or all.
+      Design speed allows comparison between for example a heavy bicycle with a powerful motor and a light one with a smaller motor. When the motor is strong enough, the design speed will be equal to the cut-off speed. The parameter is an alternative for technical parameters such as motor torque or power.</p>
+
+      <h2>Typical resistance</h2>
+
+      <p>The typical resistance is defined as the resistance that the vehicle has to overcome at 25 km/h, in standardised conditions. It is not important if the needed power comes from the battery, the human or from another source.
+      The typical resistance is in close harmony with the design speed and might be disregarded, but it helps when assessing the probability that one can have a certain range in certain circumstances with the vehicle.</p>
+
+      <h2>Net available energy</h2>
+
+      <p>The net available energy at the wheels is an alternative for estimation of vehicle range and battery capacity. Vehicle range strongly depends on environmental conditions, for example winds speed or slope. Battery capacity doesn't take into account the general efficiency of the vehicle, while the new defined parameter is more objective in estimating the vehicle performance.</p>
+
+      <h2>Size</h2>
+
+      <p>The length of the smallest and the biggest people that are likely to fit on the cycle. Definition provided by TGVelo</p>
+
+      <h2>Posture</h2>
+
+      <p>The posture that the rider likely will hold when riding the vehicle. Definition provided by TGVelo</p>
+
+      <h2>Max assistance speed</h2>
+
+      <p>Cut-off speed of the motor, as defined by EN15194.</p>
+
+      <h2>Inclination grade</h2>
+
+      <p>The traction grade is the theoretical slope in &#37; on which the bicycle with full load can mount at a constant speed of 10 kph only with the power of the motor.</p>
+
+      <h2>Speed &#64; 60 - 90 rpm</h2>
+
+      <p>This is the lowest speed where one can pedal at 60 rpm and the highest speed where one can pedal at 90 rpm. It is an alternative expression of the more technical <q>gear ratio</q>, <q>gear inches</q> or <q>meter development</q>.</p>
+
+      <h2>Charging time</h2>
+
+      <p>Time needed to fully charge the battery.</p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Load functions to add menu -->
+<script src="js/addMenu.js"></script>
+
+<!-- Custom script for this document-->
+<script>
+sections.addSections();
+</script>
+
+<!-- <script>
+
+var menu = d3.select("#menu")
+var title = d3.select("h1");
+
+title.attr("id", title.text());
+
+menu.append("li").append("a")
+  .text(title.text())
+  .attr("class", "sectionTitle")
+  .attr("href", "#" + title.text());
+
+var sections = d3.selectAll("h2")
+sections.attr("id", function(d, i) {return this.innerHTML.replace(/ /g, '_');});
+
+//var sectionDOMs = sections[0];
+
+for (i = 0; i < sections[0].length; i++) {
+  menu.append("li").append("a")
+    .attr("href", "#" + sections[0][i].id)
+    .text(sections[0][i].innerHTML);
+}
+
+</script> -->
+
+</body>
+</html>

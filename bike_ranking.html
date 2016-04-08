@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- load external scripts from https://d3js.org/ and http://getbootstrap.com/css/
+	http://www.cssportal.com/style-input-range/-->
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3.slider.js"></script>
+
+	<!--
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+
+	<link  rel="stylesheet"  type="text/css"  href="css/jquery-ui.css">
+-->
+	<link  rel="stylesheet"  type="text/css"  href="css/bootstrap.css">
+	<link  rel="stylesheet"  type="text/css"  href="css/slider.css">
+	<link  rel="stylesheet"  type="text/css"  href="css/site_specific.css">
+	<link  rel="stylesheet"  type="text/css"  href="css/d3.slider.css">
+    <title>TGVelo kwaliteitslabel</title>
+</head>
+<body>
+
+<div class="container">
+
+<!-- <div class="row">
+	<div class="col-md-12">
+	<a href="index.html"><div class="header"></div></a>
+	</div>
+</div> -->
+<a href="index.html">
+<button class="btn btn-primary">Home Page</button>
+</a>
+
+<div class="row">
+	<div class="col-md-12">
+	<h2>Adapt to user preferences</h2>
+	<p>With the slider input you can indicate which parameter you find most inportant.
+		The input value ranges from one to five, with one representing "not important" and five "very important".
+		Your preferences are combined with the measured quality to rank the bikes. The bikes displayed are temporary dummy bikes.</p>
+	</div>
+</div>
+
+<div class="panel panel-primary">
+<div class="panel-heading">Select bicycles</div>
+<div class="panel-body">
+<div class="row">
+  <div class="form-group">
+		<div class="col-md-5">
+			<h3>Select the desired design speed range</h3>
+			<div id="speedSlider"></div>
+			<h3><span id="minSpeed"></span><span id="maxSpeed"></span></h3>
+		</div>
+		<button class="btn btn-primary" id="submit">Update</button>
+	<div class="col-md-1"></div>
+	<div class="col-md-5">
+		<h3> Select the minimum net available energy</h3>
+		<input type="range" min="0" max ="500" value="1" id="nae-slider">
+		<h3>Selected value: <span id="nae-slider-label" style="color:grey"></span></h3>
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="panel panel-primary">
+<div class="panel-heading">Interactive electric bicyle selection</div>
+<div class="panel-body">
+	<div class="row">
+	<div class="col-md-5">
+		<h3>Reliability <span id="performance-slider-label" style="color:grey"></span></h3>
+		<input type="range" min="1" max ="5" value="1" id="performance-slider">
+
+		<h3>Safety <span id="safety-slider-label" style="color:grey"></span></h3>
+		<input type="range" min="1" max ="5" value="1" id="safety-slider">
+
+		<h3>Usability <span id="useability-slider-label" style="color:grey"></span></h3>
+		<input type="range" min="1" max ="5" value="1" id="useability-slider">
+	</div>
+	<div class="col-md-1"></div>
+	<div class="col-md-5" id="ranking" style="padding: 3px; background-color: Lavender">
+	</div>
+	<div class="col-md-1">
+	</div>
+	</div>
+</div>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Bicylce parameter</div>
+<div class="panel-body">
+	<table class="table table-striped"></table>
+</div>
+</div>
+
+</div>
+<script src="js/selector.js"></script>
+
+<div id="footer">
+<div class="container">
+	<p class="muted credit">
+		Created with <a href="https://d3js.org/" target="_blank">d3.js</a>
+	</p>
+</div>
+</div>
+
+</body>
+</html>

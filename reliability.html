@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta  content="text/html; charset=windows-1252"  http-equiv="content-type">
+    <meta  name="viewport"  content="width=device-width, initial-scale=1.0">
+
+    <script src="js/d3.min.js"></script>
+    <link  rel="stylesheet"  type="text/css"  href="css/bootstrap.css">
+    <link  rel="stylesheet"  type="text/css"  href="css/site_specific.css">
+
+    <title>TGVelo kwaliteitslabel</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <nav class="col-sm-3">
+      <ul class="nav nav-pills nav-stacked" id="menu">
+        <li><a  class="sectionTitle"  href="index.html">Home Page</a></li>
+      </ul>
+    </nav>
+
+    <div class="col-sm-9">
+      <!-- Webpage main content -->
+      <h1>Reliability scores</h1>
+
+      <h2>Resistance against failure</h2>
+
+      <p>The vehicle is subjected to loads of different kinds. After these loads, the initial performance parameters are re-measured. If the vehicle still has the same parameters, the score for the resistance against failure will be high. These loads are applied:</p>
+
+      <ul>
+      <li>Impacts on the falling vehicle, lights, reflectors, brake system and fenders</li>
+      <li>Forces and vibrations on the vehicle as a whole with as points of action: contact points between wheels and ground, pedals, seat, grips and luggage carriers.</li>
+      <li>UV on saddle, transparent screens and colours</li>
+      <li>Salt and dust on the vehicle as a whole</li>
+      <li>Water and freezing cold on the vehicle as a whole</li>
+      <li>Foolish operations concerning gears, chargers, batteries, kickstand, adjustable parts, cables and wires</li>
+      <li>Rubbing of labels, electric switches and covers</li>
+      <li>Cutting of the saddle, hand grips and tyres</li>
+      <li>Puncturing of the tyres</li>
+      </ul>
+
+      <h2>Redundancy</h2>
+
+      <p>Redundancy is the possibility to have a (temporary) solution when a component fails, so that the journey can continued. E.g.; a flat tyre can be repaired, or when one brake fails, another brake is still functional.
+      The redundancy is examinated on</p>
+
+      <ul>
+      <li>Lighting, tyres and brakes</li>
+      <li>Chain and gears</li>
+      <li>Battery.</li>
+      </ul>
+
+      <h2>Predictability</h2>
+
+      <p>A predictable vehicle will warn when a fail is going to happen. E.g.; a brittle fracture in the frame causes a sudden fall, while a ductile fracture in the same area often gives the time to brake and soften the consequences.
+      The predictability is examined on</p>
+
+      <ul>
+      <li>The frame and the handlebars</li>
+      <li>The pedal mechanism</li>
+      <li>The electric motor and the battery.</li>
+      </ul>
+
+      <h2>Maintenance</h2>
+
+      <p>The maintenance score compares the vehicle with an theoretical vehicle that needs maintenance every week, is very hard to maintain and has no standardised components. A high figure means easy to maintain. Following concepts are regarded</p>
+
+      <ul>
+      <li>The tyres and attachment of components</li>
+      <li>Lubrication and regulation of brakes and gears</li>
+      <li>Electric circuits</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<!-- Load functions to add menu -->
+<script src="js/addMenu.js"></script>
+
+<!-- Custom script for this document-->
+<script>
+sections.addSections();
+</script>
+
+</body>
+</html>
