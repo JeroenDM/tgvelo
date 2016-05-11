@@ -42,12 +42,11 @@ body {
 
 /* Header photo displayed on some pages*/
 .header {
-  background: url("../image/foto-amsterdam-7.jpg");
+  background: url("../image/fietsen_gent_jeroen.jpg");
 	background-repeat: no-repeat;
 	/*background-size: contain;*/
-  background-size: cover;
-	background-position: top;
-
+    background-size: cover;
+	background-position: 0px -40px;
 	height: 200px;
 }
 
