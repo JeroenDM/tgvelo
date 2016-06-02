@@ -25,6 +25,10 @@ body {
   color: #2980b9;
 }*/
 
+h2 {
+    font-size: 200%;
+}
+
 #footer {
   text-align: center;
 }
