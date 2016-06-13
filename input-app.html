@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TGVelo Quality label</title>
+
+<link rel="stylesheet"  type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/site_specific.css">
+<link rel="stylesheet" type="text/css" href="css/formStyle.css">
+</head>
+    
+<body>
+
+    <form id="soundLevel">
+        <h2>Sound level</h2>
+    <div>
+        <label for="sound1">Measurement 1</label>
+        <input type="text" id="sound1" name="sound1" />
+    </div>
+    <div>
+        <label for="sound2">Measurement 2</label>
+        <input type="text" id="sound2" name="sound1" />
+    </div>
+    <div>
+        <label for="sound3">Measurement 3</label>
+        <input type="text" id="sound3" name="sound1" />
+    </div>
+    <div>
+        <label for="sound4">Measurement 4</label>
+        <input type="text" id="sound4" name="sound1" />
+    </div>
+    <div>
+        <label for="sound5">Measurement 5</label>
+        <input type="text" id="sound5" name="sound1" />
+    </div>
+    
+    <div class="button">
+        <button type="button" onclick="calcResult()">Calculate score</button>
+    </div>
+    <div class="output">
+        <label>Mean sound level</label>
+        <output id="meanSound">0</output>
+        <label>Score</label>
+        <output id="soundScore">0</output>
+    </div>
+</form>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Made by Jeroen De Maeyer based on <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+    
+<script src="js/forms.js"></script>
+    
+</body>
+</html>
