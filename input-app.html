@@ -8,9 +8,13 @@
 <link rel="stylesheet"  type="text/css"  href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/site_specific.css">
 <link rel="stylesheet" type="text/css" href="css/formStyle.css">
+    
+<script src="js/jquery.js"></script>
 </head>
     
 <body>
+    
+    <h1>Input app TGVelo quality system in progress</h1>
 
     <form id="soundLevel">
         <h2>Sound level</h2>
@@ -20,19 +24,19 @@
     </div>
     <div>
         <label for="sound2">Measurement 2</label>
-        <input type="text" id="sound2" name="sound1" />
+        <input type="text" id="sound2" name="sound2" />
     </div>
     <div>
         <label for="sound3">Measurement 3</label>
-        <input type="text" id="sound3" name="sound1" />
+        <input type="text" id="sound3" name="sound3" />
     </div>
     <div>
         <label for="sound4">Measurement 4</label>
-        <input type="text" id="sound4" name="sound1" />
+        <input type="text" id="sound4" name="sound4" />
     </div>
     <div>
         <label for="sound5">Measurement 5</label>
-        <input type="text" id="sound5" name="sound1" />
+        <input type="text" id="sound5" name="sound5" />
     </div>
     
     <div class="button">
@@ -45,6 +49,42 @@
         <output id="soundScore">0</output>
     </div>
 </form>
+    
+    <form id="sizing">
+        <h2>TGVelo sizing system</h2>
+        <div>
+            <label>Saddle maximum height</label>
+            <input type="text" id="maxSaddleHeight"/>
+        </div>
+        <div>
+            <label>Saddle minimum height</label>
+            <input type="text" id="minSaddleHeight" />
+        </div>
+        <div>
+            <label>Saddle maximum lenght</label>
+            <input type="text" id="maxSaddleLenght" />
+        </div>
+        <div>
+            <label>Saddle minimum lenght</label>
+            <input type="text" id="minSaddleLenght" />
+        </div>
+        <div>
+            <label>Handlebar height</label>
+            <input type="text" id="handlebarHeight" />
+        </div>
+        <div>
+            <label>Handlebar length</label>
+            <input type="text" id="handlebarLength" />
+        </div>
+        <div>
+            <label>Length from saddle to handelbar</label>
+            <input type="text" id="saddleToHandlebar" />
+        </div>
+        <div>
+            <label>Seatpost angle with ground</label>
+            <input type="text" id="seapostAngle">
+        </div>
+    </form>
 
 <div id="footer">
     <div class="container">

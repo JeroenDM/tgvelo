@@ -26,3 +26,20 @@ function calcResult() {
     document.getElementById("meanSound").value = meanSound + " dBA";
     document.getElementById("soundScore").value = round( ( (meanSound - 80) / 40 ) * 10, 1 ) + " / 10";
 }
+
+var inputs = $('form#sizing [id]');
+
+// print table name do index in console
+console.log("id    |     index");
+for (var i = 0; i<inputs.length; i++) {
+    console.log(inputs[i].getAttribute("id") + "   |    " + i);
+}
+
+/*maxSaddleHeight   |    0
+minSaddleHeight   |    1
+maxSaddleLenght   |    2
+minSaddleLenght   |    3
+handlebarHeight   |    4
+handlebarLength   |    5
+seapostAngle   |    7*/
+

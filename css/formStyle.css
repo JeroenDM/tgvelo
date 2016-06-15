@@ -1,6 +1,10 @@
+h1 {
+    margin: 20px auto;
+    color: gray;
+}
 form {
     /* Just to center the form on the page */
-    margin: 0 auto;
+    margin: 10px auto;
     width: 600px;
     /* To see the outline of the form */
     padding: 1em;
@@ -8,7 +12,7 @@ form {
     border-radius: 1em;
 }
 form div + div {
-    margin-top: 1em;
+    margin-top: 1px;;
 }
 label {
     /* To make sure that all labels have the same size and are properly aligned */
