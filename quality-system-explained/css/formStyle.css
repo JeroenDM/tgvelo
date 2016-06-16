@@ -2,6 +2,15 @@ h1 {
     margin: 20px auto;
     color: gray;
 }
+div.text {
+        /* Just to center the form on the page */
+    margin: 10px auto;
+    width: 600px;
+    /* To see the outline of the form */
+    padding: 1em;
+    background-color: azure;
+    border-radius: 1em;
+}
 form {
     /* Just to center the form on the page */
     margin: 10px auto;
@@ -72,4 +81,9 @@ button {
 
 #soundLevel input {
     width: 150px;
+}
+.sideBySide img {
+    width: 40%;
+    display: inline;
+    margin-left: 2%;
 }
