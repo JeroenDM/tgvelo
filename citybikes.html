@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- load external scripts from https://d3js.org/ and http://getbootstrap.com/css/
+	http://www.cssportal.com/style-input-range/-->
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3.slider.js"></script>
+
+	<link  rel="stylesheet"  type="text/css"  href="css/bootstrap.css">
+	<link  rel="stylesheet"  type="text/css"  href="css/slider.css">
+	<link  rel="stylesheet"  type="text/css"  href="css/site_specific.css">
+	<link  rel="stylesheet"  type="text/css"  href="css/d3.slider.css">
+    <title>TGVelo kwaliteitslabel</title>
+</head>
+<body>
+
+<div class="container">
+
+<div class="row">
+	<div class="col-md-12">
+	<h2>Eerste hulp bij elektrische fiets kiezen.</h2>
+        <p>Hieronder wordt gedemonstreed hoe de keuze van een fiets wordt beïnvloed door de voorkeuren van de gebruiker. De fietsen zijn reële fietsen getest in het kader van het TGVelo project.</p>
+	</div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Fietsen selecteren
+    </div>
+    <div class="panel-body">
+        <p>In dit paneel kun je de fietsen uitvinken die je niet wil meenement in de vergelijking op basis van de gegeven informatie.</p>
+        <table class="table table-striped" id="selectionTable"></table>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Voorkeuren instellen
+    </div>
+    <div class="panel-body">
+        <p>Met de sliders kun je meer gewicht geven aan een paramter die jij belangrijk vindt. De slider op 0 zetten betekent dat je die parameter niet mee neemt in de vergelijking.</p>
+	<div class="row">
+        <div class="col-md-5">
+            <h3>Bruikbaarheid<span id="useability-slider-label" style="color:grey"></span></h3>
+            <input type="range" min="0" max ="5" value="1" id="useability-slider">
+            
+            <h3>Betrouwbaarheid<span id="reliability-slider-label" style="color:grey"></span></h3>
+            <input type="range" min="0" max ="5" value="1" id="reliability-slider">
+
+            <h3>Veiligheid<span id="safety-slider-label" style="color:grey"></span></h3>
+            <input type="range" min="0" max ="5" value="1" id="safety-slider">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5" id="ranking" style="padding: 3px; background-color: Lavender">
+        </div>
+        <div class="col-md-1">
+        </div>
+	</div>
+</div>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Numerieke waarden</div>
+<div class="panel-body">
+    <p>De scores in de verschillende categoriën worden berekent op basis van gemeten parameters. Deze scores worden dan gebruikt op de ranking hierboven te maken op basis van de score.</p>
+	<table class="table table-striped" id="categories"></table>
+</div>
+</div>
+
+</div>
+<script src="js/selector_v2.js"></script>
+<!--<script src="js/addDetails.js"></script>-->
+
+<div id="footer">
+<div class="container">
+	<p class="muted credit">
+		Created with <a href="https://d3js.org/" target="_blank">d3.js</a>
+	</p>
+</div>
+</div>
+
+</body>
+</html>

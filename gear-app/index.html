@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gear app</title>
+		<meta charset="utf-8">
+		<!-- bootstrap css styling -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<!-- custom css styling -->
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+	</head>
+
+  <body>
+	<div class="container">
+        
+	<div class="row">
+		<div class="col-md-4">
+        <h1>TGVelo gear app</h1>
+        <p>On this page you can compare the bicycle speed at 50 rpm and 70 rpm cadence for different gears.</p> 
+			<form class="form">
+			  <div class="form-group">
+			    <label>Wheel size</label>
+                  <p>The diameter of the rear wheel in inches?</p>
+					<select class="form-control" id="wheelSize">
+					  <option value=28>28 inch</option>
+					  <option value=26>26 inch</option>
+					</select>
+			  </div>
+			  <div class="form-group">
+			    <label># chainring tooth</label>
+                  <p> Number of tooth at the crank</p>
+			    <input type="number" class="form-control" id="front" placeholder=46 min=10 max=80 value="46">
+			  </div>
+			  <div class="form-group">
+			    <label># sprocket tooth</label>
+                  <p>Number of tooth at the back</p>
+			    <input type="number" class="form-control" id="back" placeholder=22 min=5 max=50 value = 22>
+			  </div>
+				<!-- // page refreshes because button is in form tag.
+				// therefore add ;return false; to the onclick callback -->
+				<button type="button" class="btn btn-success" onclick="update()">Update</button> <!--return false;-->
+			</form>
+		</div>
+
+		<div class="col-md-8">
+				<div class="chartArea">
+					<h2>Available speed range</h2>
+                    <div class="caption">
+                        <p>Speed range based on a cadence (or pedaling speed) of 50 rpm for to lower bound to 70 rpm for the upper bound.</p>
+                    </div>
+					<div class = "chart">
+					</div>
+                    
+				</div>
+		</div>
+	</div>
+
+	</div>
+
+		<!-- dependencies for d3 -->
+    <script src="js/d3.min.js"></script>
+		<!-- custom javascript -->
+		<script src="js/modules.js"></script>
+		<script src="js/main.js"></script>
+
+	</div>
+  </body>
+
+</html>

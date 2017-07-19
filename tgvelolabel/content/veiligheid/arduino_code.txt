@@ -1,0 +1,41 @@
+<pre>
+<span style="color: #434F54;">/*&nbsp;Setup&nbsp;and&nbsp;read&nbsp;load&nbsp;cell&nbsp;connected&nbsp;to&nbsp;arduino&nbsp;via&nbsp;the&nbsp;hx711&nbsp;brakeout&nbsp;board</span>
+<span style="color: #434F54;">&nbsp;*&nbsp;Code&nbsp;based&nbsp;on&nbsp;sample&nbsp;for&nbsp;digital&nbsp;weight&nbsp;scale&nbsp;of&nbsp;hx711</span>
+<span style="color: #434F54;">&nbsp;*&nbsp;library&nbsp;design:&nbsp;Weihong&nbsp;Guan&nbsp;(@aguegu)</span>
+<span style="color: #434F54;">&nbsp;*&nbsp;library&nbsp;host&nbsp;on</span>
+<span style="color: #434F54;">&nbsp;*https://github.com/aguegu/ardulibs/tree/3cdb78f3727d9682f7fd22156604fc1e4edd75d1/hx711</span>
+<span style="color: #434F54;">&nbsp;*/</span>
+
+#include&nbsp;&lt;Hx711.h&gt;
+
+<span style="color: #434F54;">//&nbsp;Make&nbsp;a&nbsp;Hx711&nbsp;object&nbsp;named&nbsp;scale</span>
+<span style="color: #434F54;">//&nbsp;Hx711.DOUT&nbsp;-&nbsp;pin&nbsp;#A2</span>
+<span style="color: #434F54;">//&nbsp;Hx711.SCK&nbsp;-&nbsp;pin&nbsp;#A3</span>
+Hx711&nbsp;scale(A2,&nbsp;A3);
+
+<span style="color: #00979C;">void</span> <span style="color: #5E6D03;">setup</span>() {
+&nbsp;&nbsp;<span style="color: #434F54;">// Setup serial communication</span>
+&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">begin</span>(9600);
+&nbsp;&nbsp;
+&nbsp;&nbsp;<span style="color: #434F54;">// Set scalefactor for conversion to kg</span>
+&nbsp;&nbsp;<span style="color: #434F54;">// (uitgang 24 bit ADC -&gt; voltage -&gt; kg</span>
+&nbsp;&nbsp;scale.setScale(1992.0/0.033);
+&nbsp;&nbsp;
+&nbsp;&nbsp;<span style="color: #434F54;">// Set size of moving average on data to reduce noise</span>
+&nbsp;&nbsp;<span style="color: #434F54;">//scale.averageValue(3);</span>
+}
+
+<span style="color: #00979C;">void</span> <span style="color: #5E6D03;">loop</span>() {
+&nbsp;&nbsp;<span style="color: #00979C;">float</span> time = <span style="color: #D35400;">millis</span>()/1000.0;
+&nbsp;&nbsp;
+&nbsp;&nbsp;<span style="color: #434F54;">// Print weight in kg (NOT IN gram) to serial port</span>
+&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(scale.getGram(), 3);
+&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(<span style="color: #006699;">"\t"</span>);
+&nbsp;&nbsp;<span style="color: #434F54;">// Pint a timestamp</span>
+&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(time, 3);
+&nbsp;&nbsp;
+&nbsp;&nbsp;<span style="color: #D35400;">delay</span>(100);
+}
+
+
+</pre>

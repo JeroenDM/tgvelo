@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ontwerpsnelheid</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            
+        <h1>Ontwerpsnelheid</h1>
+            
+        <p class="intro">Technische eigenschappen van de fiets zoals motorkoppel en controlestrategie beïnvloeden de typische snelheid van de fiets. Bij een groot deel van de elektrische fietsen is de snelheid waarnaar de de fiets neigt zelfs onafhankelijk van de gebruikersinput aan de pedalen. Om dit complex gedrag van de fiets samen te vatten in één getal is ontwerpsnelheid gedefiniëerd. Om een idee te hebben bij welke snelheid welke vermogens nodig zijn is deze <a href="http://www.kreuzotter.de/english/espeed.htm" target="_blank">speed and power calculator</a> handig.</p>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Definitie</h2>
+            <p>De ontwerpsnelheid is de snelheid waarmee de fietser in genormaliseerde omstandigheden rijdt, assistentieniveau maximaal, meetrappen aan 100 Watt. Bij pedelecs komt dit vaak overeen met de afschakelsnelheid (25 km/u) als de motor krachtig genoeg is. Bij speed-pedelecs is de ontwerpsnelheid een zeer onderscheidende factor.</p>
+            <p>Ook voor niet-elektrische fietsen kan deze definitie gebruikt worden om aan te duiden hoe efficiënt een fiets is.</p>
+            <img src="design_speed_explanation.png" alt="ontwerpsnelheid_schema" width="100%"/>
+        </div>
+        <div class="col-md-6">
+            <h2>Meten</h2>
+            <p>Bepalen van de ontwerpsnelheid kan op verschillende manieren gebeuren. Binnen het kader van TGVelo zijn drie mogelijke procedures uitgewerkt.</p>
+            <ul>
+                <li>Schatting tijdens testrit op de weg.</li>
+                <li>Berekening op basis van vermogensmeting op testbank en gemeten en lucht- en rolweerstand.</li>
+                <li>Directe simulatie van rit op testbank met gemeten lucht- en rolweerstand.</li>
+            </ul>
+            <p>De eerste methode heeft als voordeel dan enkel een snelheidmeter en vermogensmeting aan de pedalen noodzakelijk is. De herhaalbaarheid is echter beperkt als dit buiten op de weg wordt uitgevoerd vanwege de grote invloed van wind en type wegdek. De andere twee methodes vermijden externe invloeden door in een labo te testen. Je hebt er wel testapparatuur voor nodig om het motorvermogen van de fiets aan het het wiel te meten. In volgende paragrafen worden de drie methoden in detail uitgelegd.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Eenvoudige schatting op de weg</h2>
+            <p>Installeer een snelheidmeter op de fiets die kan meten tot op +/- 1 km/u nauwkeurig. Installeer een vermogenmeter (vermogen van de mens aan de pedalen) die kan meten tot op +/- 5 W nauwkeurig. In de meest ideale situatie word de snelheid en het vermogen gelogged op een apparaat zodat het achteraf op de computer kan geanalyseerd worden.</p>
+            <p>Zoek een testsite met volgende eigenschappen:</p>
+            <ul>
+                <li>Een vlakke weg (geen helling groter dan +/- 0.2 %).</li>
+                <li>Het wegdek is gladde beton of asfalt zoder bulten of randjes. Géén tegels, zand, kasseien, ...</li>
+                <li>De temperatuur is tussen 14 °C en 26 °C.</li>
+                <li>De geografische ligging van de meetsite is niet meer dan 600 m boven zeeniveau.</li>
+                <li>De wind blijft gedurende de test constant en minder dan 2 m/s </li>
+            </ul>
+            
+            <p>De test kan dan worden uitgevoerd door een persoon met volgende eigenschappen:</p>
+            <ul>
+                <li>De persoon heeft een lichaamslengte gelijk aan het gemiddelde van het <a href="maat.html">bereik van mensen dat op de fiets past</a>, met een foutmarge van +/- 5cm. Als bijvoorbeeld mensen van 160 cm to 186 cm op de fiets passen, dan wordt deze test uitgevoerd door iemand die tussen 168 cm en 178 cm groot is.</li>
+                <li>De persoon heeft een BMI van 22 +/- 3.</li>
+                <li>De persoon heeft een beschermingspak aan met kap om de invloed van kleding te standaardiseren.</li>
+            </ul>
+            
+            <p>De test zelf wordt uitgevoerd met de fiets in maximale assistentie. Rij twee minuten rechtdoor met een trapvermogen van 100 W. Rij daarna twee minuten in de tegenovergestelde richting met een trapvermogen van 100 W. De constante snelheid die wordt gehaald is de ontwerpsnelheid in die richting. Het gemiddelde van de twee snelheden is dan de ontwerpsnelheid van de fiets.</p>
+            
+            <h2>Berekening op basis van vermogensmeting</h2>
+            <p>Voor de berekening zijn verschillende gegevens nodig uit voorafgaande metingen:</p>
+            <ul>
+                <li>Motorvermogen aan het wiel in functie van de snelheid Pm(v).</li>
+                <li>Rolweerstandscoëfficient Cr.</li>
+                <li>Product van luchtweerstandscoëfficient en frontale oppervlak CdA.</li>
+                <li>Gewicht van de fiets.</li>
+            </ul>
+            <p>Het theoretisch benodigde voormogen kan in functie van de snelheid berekend worden.</p>
+            <p>Pw(v) = (M * g * Cr + 0.5 * rho * CdA * v^2) * v</p>
+            <p>Dit is op een vlakke weg zonder wind. Met de gravitatieconstante g = 9.81 m/s^2, luchtdichtheid rho = 1.225 kg/m^3 en M het totale gewicht van fiets met volle belanding en rijder. Bij de functie van motorvermogen aan het wiel wordt 100 W toegevoegd min de verliezen door het kettingrendement. De grootste snelheid waarvoor Pm(v) + 100 = Pw(v) is de ontwerpsnelheid.</p>
+            
+            <h2>Meting op basis van simulatie in labo</h2>
+            <p>De formule voor het weerstandsvermogen in functie van de snelheid uit de vorige sectie kan gebruikt worden om een normale rit rechtdoor te simuleren op een testbank. Wanneer men dan op een testbank 100 W aan de pedalen aanlegt, de fiets in hoogste assistentie zet en de weerstand aan het wiel regelt in functie van de snelheid op basis van de formule, dan kan men heel snel te ontwerpsnelheid bepalen.</p>
+        </div>
+    </div>
+</div>
+ 
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banden</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+</head>
+    
+<body>
+    <div class="container">
+    
+      <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-12">
+            
+        <h1>Banden</h1>
+        <h1 class="subtitle">Grip / weerstand tegen lekken / redundantie / breedte</h1>
+            
+        <p class="intro">De parameter 'banden' is een verzameling van eigenschappen die aan een band kunnen gelinkt worden en een deel van de kwaliteit van de band bepalen. Goede banden zijn essentieel voor een veilige fiets, maar de banden hebben natuurlijk op veel meer parameters invloed, waar in deze parameter geen rekening wordt gehouden (maar wel in de andere parameters).</p>
+            
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-12">
+            <h2>Definitie</h2>
+            <p>De score 'Banden' is een vergelijking met het maximaal haalbare. Een hoge score betekent:</p>
+            <ul>
+                <li>De banden hebben een hoge weerstand tegen het prikken van een naald van 2mm doorsnede (lekke banden kunnen de stabiliteit van de fietser in gedrang brengen). </li>
+                <li>De banden hebben een hoge zijdelingse dynamische wrijvingskracht bij een verticale belasting van 200N (een hoge grip zorgt voor zekerder bochtengedrag.</li>
+                <li>De banden kunnen snel hersteld worden in geval van lek (banden op druk dragen bij tot een veilig weggedrag).</li>
+                <li>De banden zijn breed (nuttig om minder gemakkelijk in spleten te blijven steken).</li>
+            </ul>
+            
+        </div>
+        <div class="col-md-12">
+            <h2>Meten Grip</h2>
+            <div class="col-md-6">
+                <img src="bandenslede.png" alt="bandenslede" width="80%" />
+                <p>De band wordt op een slede geïnstalleerd en belast met gewicht steunende op een gestandaardiseerde ondergrond (in het geval van TGVelo een ruwe terrastegel). Gewicht wordt toegevoegd tot de band met een kracht van 200 N op de ondergrond drukt. De slede met band kan zijwaarts worden voortgetrokken met een katrol die aan een vast object wordt gemonteerd. Tussen de katrol en de slede wordt een krachtcel gemonteerd om de trekkracht te loggen. De spanning op de katrol wordt geleidelijk opgevoerd. Als de slede in beweging komt wordt deze verder getrokken aan constante snelheid tot de band 0.1 m over de ondergrond is gesleept. Dit opspannen en dan slepen wordt vijf keer herhaald. In de gelogde trekkracht heeft men dan vijf pieken. Het gemiddelde van de vijf pieken is dan de trekkracht voor deze band. De meting is geldig als de vijf metingen binnen de 15 % van hun gemiddelde vallen.</p>
+            </div>
+            <div class="col-md-6">
+                <p>Na het vergelijken van testen met krachtcel en trekweegschaal blijkt de laatste optie snel herhaalbare resultaten op te leveren. Zowel piekkracht als gemiddelde kracht kan gebruikt worden als maatstaaf om banden te vergelijken. Hieronder een voorbeeld van drie slipkracht metingen waarbij de kracht gemeten is met een krachtcel en de data gelogged met Arduino.</p>
+                <img src="grip_voorbeeld.png" alt="bandenslede" width="110%" />
+            </div>
+         </div>
+        <div class="col-md-12">
+            <h2>Meten Redundantie</h2>
+                <p>Er wordt een score berekend op strafpunten, rekening houdend met het relatief belang van onderstaande observaties:</p>
+                <ul>
+                    <li>Is, bij gebruik van de fiets, een manier beschikbaar om een licht lossende band bij te pompen?</li>
+                    <li>Is, bij gebruik van de fiets, een manier beschikbaar om een lekke band snel te dichten, en op zo'n manier dat de oorspronkelijke bandeigenschappen behouden blijven?</li>
+                    <li>Is, bij gebruik van de fiets, een manier beschikbaar om een lekke band snel te vervangen?</li>
+                    <li>Hoeveel plaats is er tussen de spaken om een band op te pompen?</li>
+                </ul>
+         </div>
+
+        <div class="col-md-12">
+            <h2>Meten prikweerstand</h2>
+            <div class="col-md-6">
+                <p>Een gestandaardiseerde pin van 2 mm diameter wordt in de centerlijn van de band geprikt. De pin is gemonteerd op een krachtcel om de prikkracht te meten.</p>
+                <img src="priktestbank.jpg" alt="bandenslede" width="80%" />
+     
+                <p>Om deze test uit te voeren is een pers vereist om de band gecontroleerd te kunnen doorprikken. De band wordt opgepompt tot de aangegeven druk en op de pers geïnstalleerd. De pin wordt aan een lage constante snelheid in de band gebracht. Van het raken van de band tot het doorprikken zitten vijf seconden of meer. Voor elke band wordt deze test 3 maal herhaald en het gemiddelde van de maximale krachten wordt genomen.</p>
+     
+                <img src="datalogging_schema.png" alt="schema datalogging" width="80%" />
+                <p>De kracht wordt gemeten met een <a href="http://www.robotshop.com/en/type-s-load-cell-100-kg.html" target="_blank">krachtcel</a> tussen pers en pin. De zeer lage spanning van de krachtcel wordt ingelezen met een <a href="http://www.robotshop.com/en/gravity-hx711-load-cell-wheatstone-bridge-interface.html" target="_blank">wheat stone bridge interface</a></p>
+                <ul>
+                    <li><a href="datasheet-loadcell.pdf" target="_blank">Datasheet krachtcell</a></li>
+                    <li><a href="mechanical-drawing-loadcell.pdf" target="_blank">Afmetingen krachtcell</a></li>
+                    <li><a href="datasheet_hx711.pdf" target="_blank">Datasheet hx711</a></li>
+                    <li><a href="http://www.dfrobot.com/wiki/index.php/Weight_Sensor_Module_V1" target="_blank">Hhandleiding hx711</a>
+                </ul>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="type-s-load-cell-100-kg.jpg" alt="krachtcel" width="100%" />
+                    </div>
+                    <div class="col-md-3">
+                    <img src="hx711.jpg" alt="krachtcel" width="100%" />
+                    </div>
+                    <div class="col-md-3">
+                    <img src="arduino-UNO.png" alt="krachtcel" width="100%" />
+                    </div>
+                    <div class="col-md-3">
+                    <img src="scilabgui_temp.png" alt="krachtcel" width="100%" />
+                    </div>
+                </div>
+            
+                <p>De data van de krachtcel interface wordt ingelezen en omgerekend naar spanning door arduino. Vanuit Arduino wordt het over usb via seriële communicatie doorgestuurd naar de computer waar een Scilab programma de data inleest, omrekent naar Newton en opslaat.</p>
+            </div>
+            <div clas="col-md-6">
+                <pre>
+                <span style="color: #434F54;">/*&nbsp;Setup&nbsp;and&nbsp;read&nbsp;load&nbsp;cell&nbsp;connected&nbsp;to&nbsp;arduino&nbsp;via&nbsp;the&nbsp;hx711&nbsp;brakeout&nbsp;board</span>
+                <span style="color: #434F54;">&nbsp;*&nbsp;Code&nbsp;based&nbsp;on&nbsp;sample&nbsp;for&nbsp;digital&nbsp;weight&nbsp;scale&nbsp;of&nbsp;hx711</span>
+                <span style="color: #434F54;">&nbsp;*&nbsp;library&nbsp;design:&nbsp;Weihong&nbsp;Guan&nbsp;(@aguegu)</span>
+                <span style="color: #434F54;">&nbsp;*&nbsp;library&nbsp;host&nbsp;on</span>
+                <span style="color: #434F54;">&nbsp;*https://github.com/aguegu/ardulibs/tree/3cdb78f3727d9682f7fd22156604fc1e4edd75d1/hx711</span>
+                <span style="color: #434F54;">&nbsp;*/</span>
+                #include&nbsp;&lt;Hx711.h&gt;
+                <span style="color: #434F54;">//&nbsp;Make&nbsp;a&nbsp;Hx711&nbsp;object&nbsp;named&nbsp;scale</span>
+                <span style="color: #434F54;">//&nbsp;Hx711.DOUT&nbsp;-&nbsp;pin&nbsp;#A2</span>
+                <span style="color: #434F54;">//&nbsp;Hx711.SCK&nbsp;-&nbsp;pin&nbsp;#A3</span>
+                Hx711&nbsp;scale(A2,&nbsp;A3);
+                <span style="color: #00979C;">float</span> <span style="color: #D35400;">max</span> = 16777216;
+                <span style="color: #00979C;">float</span> druk = 0;
+
+                <span style="color: #00979C;">void</span> <span style="color: #5E6D03;">setup</span>() {
+                &nbsp;&nbsp;<span style="color: #434F54;">// Setup serial communication</span>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">begin</span>(9600);
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;<span style="color: #434F54;">// Set scalefactor for conversion to kg</span>
+                &nbsp;&nbsp;<span style="color: #434F54;">// (uitgang 24 bit ADC -&gt; voltage -&gt; kg</span>
+                &nbsp;&nbsp;scale.setScale(1);
+                &nbsp;&nbsp;<span style="color: #434F54;">//scale.setScale(1992.0/0.033);</span>
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;<span style="color: #434F54;">// Set size of moving average on data to reduce noise</span>
+                &nbsp;&nbsp;<span style="color: #434F54;">//scale.averageValue(3);</span>
+                }
+
+                <span style="color: #00979C;">void</span> <span style="color: #5E6D03;">loop</span>() {
+                &nbsp;&nbsp;<span style="color: #00979C;">float</span> time = <span style="color: #D35400;">millis</span>()/1000.0;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;<span style="color: #434F54;">// Print weight in kg (NOT IN gram) to serial port</span>
+                &nbsp;&nbsp;<span style="color: #434F54;">// Voor drukkracht max - getGram()</span>
+                &nbsp;&nbsp;druk&nbsp;=&nbsp;scale.getGram();
+                &nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (druk &gt; <span style="color: #D35400;">max</span>/2.0) druk = <span style="color: #D35400;">max</span> - druk; <span style="color: #5E6D03;">else</span> druk = - druk;
+                &nbsp;&nbsp;druk&nbsp;=&nbsp;druk&nbsp;/&nbsp;1000.0;&nbsp;<span style="color: #434F54;">// druk in mV, in kg</span>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(druk, 3);
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(<span style="color: #006699;">"\t"</span>);
+                &nbsp;&nbsp;<span style="color: #434F54;">// Pint a timestamp</span>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(time, 3);
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;<span style="color: #D35400;">delay</span>(100);
+                }
+                </pre>
+            </div>
+          </div>
+    </div>
+</div>
+ 
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut and Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

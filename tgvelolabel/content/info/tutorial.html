@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Jeroen De Maeyer" />
+
+
+<title>Tractiecapaciteit berekenen</title>
+
+<script src="tutorial_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="tutorial_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="tutorial_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="tutorial_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="tutorial_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="tutorial_files/highlight/default.css"
+      type="text/css" />
+<script src="tutorial_files/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<div class="container-fluid main-container">
+
+<div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+
+
+<h1 class="title toc-ignore">Tractiecapaciteit berekenen</h1>
+
+<p class="intro">Om de tractiecapaciteit te meten worden de fiets eerst leeggereden op eChecker. De data van deze eChecker metingen kan dan in R verwerkt worden om tot één getal, de tractiecapaciteit, te komen. Dit document beschrijf de dataverwerking. Eerst worden de vergelijkingen van de calibratie op eChecker nog eens samengevat. De volgende sectie bespreekt de structuur en het inlezen van de csv bestanden. De laatste sectie beschrijft de effectieve verwerking van de data.</p>
+<div id="kalibratie-compensatie-bandenwrijving-op-rollen" class="section level2">
+<h2>Kalibratie (compensatie bandenwrijving op rollen)</h2>
+<p>Er wordt op twee plaatsen mechanisch vermogen gemeten <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. Bij de pedaalaandrijving <span class="math inline">\(P_c\)</span> en bij de wervestroomrem <span class="math inline">\(P_{FW}\)</span>. Er treden verliezen op tussen de banden en de rollen (<span class="math inline">\(P_{td}\)</span>) en in de ketting en versnellingen <span class="math inline">\(P_d\)</span>. Dit laatste verlies kan ook worden uitgedrukt in de vorm van een rendement van ketting en versnellingen <span class="math inline">\(\eta_d\)</span>. De motor van de fiets levert een vermogen <span class="math inline">\(P_{motor}\)</span> gemeten aan het wiel.</p>
+<div id="voorwielmotor" class="section level3">
+<h3>Voorwielmotor</h3>
+<p>Bij een voorwielmotor kan het vermogensevenwicht dan als volgt uitgedrukt worden:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{c}\eta_d + P_{motor} = P_{td} + P_{FW}
+\end{aligned}
+\]</span></p>
+<p>De fiets wordt 5 minuten aangedreven zonder assistentie van de elektrische motor (situatie 1). Daarna wordt de fiets leeggereden met maximale assistentie van de motor en extra weerstand van de wervelstroomrem (situatie 2).</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{c,1}\eta_d &amp;= P_{td,1} + P_{FW,1} \\
+P_{c,2}\eta_d + P_{motor,2} &amp;= P_{td,2} + P_{FW,2}
+\end{aligned}
+\]</span></p>
+<p>Om dat de snelheid in situatie 1 en 2 dezelfde is wordt aangenomen dat de wrijving tussen banden en rollen ook hetzelfde is, dus <span class="math inline">\(P_{td,1} = P_{td,2}\)</span>. Het de twee bovenstaande vergelijkingen kan dan het motorvermogen afgeleid worden.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{motor,2} &amp;= (P_{c,1}\eta_d - P_{FW,1}) + (P_{FW,2} - P_{c,2}\eta_d)
+\end{aligned}
+\]</span></p>
+</div>
+<div id="achterwielmotor" class="section level3">
+<h3>Achterwielmotor</h3>
+<p>Voor een middenmotor wordt het motorvermogen op dezelfde plaats geleverd als dat van de pedaalaandrijving van de testbank:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(P_{c} + P_{motor})\eta_d = P_{td} + P_{FW}
+\end{aligned}
+\]</span></p>
+<p>Hier analoog aan kalibratie bij voorwielmotor situatie 1 zonder assistentie en situatie twee met maximale assistentie.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{c,1}\eta_d &amp;= P_{td,1} + P_{FW,1} \\
+(P_{c,2} + P_{motor,2})\eta_d &amp;= P_{td,2} + P_{FW,2}
+\end{aligned}
+\]</span></p>
+<p>En zo het motorvermogen afleiden op basis van de aanname <span class="math inline">\(P_{td,1} = P_{td,2}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{motor,2} = \frac{1}{\eta_d}(P_{c,1}\eta_d - P_{FW,1} + P_{FW,2}) - P_{c,2}
+\end{aligned}
+\]</span></p>
+</div>
+<div id="vereenvoudigt" class="section level3">
+<h3>Vereenvoudigt</h3>
+<p>Omdat we het rendement van de aandrijving <span class="math inline">\(\eta_d\)</span> nog niet kunnen meten zijn voorgaande formules niet rechtreeks toepasbaar. Als we aannemen dan er geen verliezen optreden (een fout van enkele percenten) dan is de vergelijking voor zowel voorwiel- als middenmotor te vereenvoudigen tot éénzelfde vergelijking.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{motor,2} = P_{c,1} - P_{FW,1} + P_{FW,2} - P_{c,2}
+\end{aligned}
+\]</span></p>
+<p>Het grootste verschil tussen voor- en middenmotor voor de testbank is de grootte van <span class="math inline">\(P_{td}\)</span> door aan- of afwezichtheid van de groene riem en een extra rollend wiel.</p>
+</div>
+</div>
+<div id="structuur-bestanden-data-en-r-code" class="section level2">
+<h2>Structuur bestanden data en R code</h2>
+<p>De map met Rcode heeft volgende indeling:</p>
+<pre><code>+-- data
+|   +-- fiets1kalvoor.csv
+|   +-- fiets1kalna.csv
+|   +-- fiets1part1.csv
+|   +-- ...
++-- Rdata
+|   +-- fiets1kalvoor.Rda
+|   +-- fiets1kalna.Rda
+|   +-- fiets1part1.Rda
+|   +-- ...
++-- doc
+|   +-- tutorial.Rmd
+|   +-- tutorial.html
++-- csvToRda.R
++-- fun.R
++-- main.R</code></pre>
+<p>De <strong>data</strong> map bevat csv bestanden met ruwe data. Er wordt bij elke test een kalibratie voor en na gedaan. Deze csvbestanden hebben de naam “fietsXkalvoor.csv” en “fietsXkalna.csv” met X het fietsnummer. De effectieve test kan in één of meerdere delen worden gedaan (als de motor oververhit raakt). Deze csv bestanden kragen de naam “fietsXpartY.csv” met Y het deelnummer.</p>
+<p>De <strong>Rdatamap</strong> bevat the geconverteerde data voor snelle verwerking in R.</p>
+<p>De <strong>doc</strong> map bevat documentatie (zoals dit document dat je nu leest). De documentatie is gemaakt met <a href="http://rmarkdown.rstudio.com/">R markdown</a>.</p>
+<p>Het script <strong>csvToRda.R</strong> converteert de csv bestanden in de data map naar Rda bestanden in de Rdata map. Dit script moet worden uitgevoerd vóór main.R.</p>
+<p>Het script <strong>fun.R</strong> bevat functies specifiek geschreven voor het verwerken van eChecker data. Deze worden ingeladen aan het begin van main.R.</p>
+<p>Het script <strong>main.R</strong> door de effectieve verwerking van de data om tot de tractiecapaciteit te komen.</p>
+</div>
+<div id="inlezen-en-converteren-ruwe-data" class="section level2">
+<h2>Inlezen en converteren ruwe data</h2>
+<p>Ik ga ervan uit dat R en Rstudio beide geïnstalleerd zijn (zie google).</p>
+<p>Open csvToRda.R in Rstudio. Na wat uitleg komt de eerste lijn code die de “working directory” goed zet. Zo kan de rest van het script gebruik maken van relatieve paden ten opzichte van deze map.</p>
+<pre class="r"><code># Hier zet je de &quot;working directory&quot; van R studio naar de map die csvtoRda.R (dit bestand) bevat
+setwd(&quot;C:/Users/jeroen.demaeyer/Google Drive/TGVelo/Studies/echecker/tutorial_tractiecapaciteit&quot;)</code></pre>
+<p>Ook het script “fun.R” en de bibliotheek “data.table” worden ingeladen.</p>
+<pre class="r"><code># In deze map zit ook R code met de functies die je gaat gebreuken, laad deze in
+source(&quot;fun.R&quot;)
+
+# laad de bibliotheek &quot;data.table&quot; die wordt gebruikt door de functie readcsv2 uit &quot;fun.R&quot;
+library(data.table)</code></pre>
+<p>Nu maken we een lijst met alle bestandsnamen van de csv bestanden in de data map.</p>
+<pre class="r"><code># alle bestanden in de map data worden geconverteerd
+# en automatisch opgeslagen onder eenzelfde naam in de map Rdata
+datalist &lt;- list.files(&quot;data&quot;, pattern = &quot;.*.csv&quot;)
+print(datalist) # lijst even tonen</code></pre>
+<pre><code>## [1] &quot;fiets1kalna.csv&quot;   &quot;fiets1kalvoor.csv&quot; &quot;fiets1part1.csv&quot;  
+## [4] &quot;fiets6kalna.csv&quot;   &quot;fiets6kalvoor.csv&quot; &quot;fiets6part1.csv&quot;  
+## [7] &quot;fiets6part2.csv&quot;</code></pre>
+<p>Met een for lus wordt nu voor elk csv bestand een Rda bestand gemaakt en in de map Rdata opgeslagen.</p>
+<pre class="r"><code>for (file in datalist) {
+  name &lt;- strsplit(file, &quot;\\.&quot;)[[1]][1] # strip the .csv part from file name
+  df &lt;- readcsv2(file, compressed = T, columns = c(&quot;ta&quot;, &quot;v&quot;, &quot;Pa1&quot;, &quot;FW&quot;))
+  
+  dfname &lt;- name
+  assign(dfname, df)
+  save(list = dfname, file = paste(&quot;Rdata/&quot;, name, &quot;.Rda&quot;, sep=&quot;&quot;))
+}</code></pre>
+<p>Alleen de kollomen (“ta”, “v”, “Pa1”, “FW”) worden opgeslagen in het Rda bestand, de andere data hebben we niet nodig voor tractiecapaciteit.</p>
+</div>
+<div id="tractiecapaciteit-berekenen" class="section level2">
+<h2>Tractiecapaciteit berekenen</h2>
+<p>Hiervoor dient het script “main.R”. Ook aan het begin van dit script wordt de working directory goed gezet en “fun.R” ingeladen. De bibliotheek “data.table” hebben we niet meer nodig. (Geen csv bestanden meer inlezen.)</p>
+<pre class="r"><code># setup ####
+# Hier zet je de &quot;working directory&quot; van R studio naar de map die main.R (dit bestand) bevat
+setwd(&quot;C:/Users/jeroen.demaeyer/Google Drive/TGVelo/Studies/echecker/tutorial_tractiecapaciteit&quot;)
+
+# In deze map zit ook R code met de functies die je gaat gebreuken, laad deze in
+source(&quot;fun.R&quot;)</code></pre>
+<p>Volgens de testprocedure wordt de kalibratie zowel voor en na de test uitgevoerd. Het gemiddedlde van de twee wordt gebruikt als kalibratievermogen ($P_{td}).</p>
+<pre class="r"><code># fiet 1 ####
+## fiets 1 kalibratie ####
+load(&quot;Rdata/fiets1kalvoor.Rda&quot;)
+
+# gemiddelde van data in interval van 100 s tot 300 s
+voor &lt;- calibrate(fiets1kalvoor, tStart = 100, tStop = 300)
+Pkalvoor &lt;- voor$Pmean - voor$FW
+
+load(&quot;Rdata/fiets1kalna.Rda&quot;)
+
+# gemiddelde van data in interval van 100 s tot 300 s
+na &lt;- calibrate(fiets1kalna, tStart = 100, tStop = 300)
+Pkalna &lt;- na$Pmean - na$FW
+
+Pkal &lt;- (Pkalna + Pkalvoor) / 2
+print(Pkal) # toon het kalibratievermogen</code></pre>
+<pre><code>## [1] 124.5454</code></pre>
+<p>Voor de kalibratie wordt telkens het gemiddelde genomen over het interval tussen 100 s (1 min 20) en 300 s (5 min). Pkal komt hier overeen met <span class="math inline">\(P_{td} = P_{c,1}\eta_d - P_{FW,1}\)</span> met <span class="math inline">\(\eta_d = 1\)</span>.</p>
+<p>Nu gaan we in de data van het leegrijden zoeken wanneer de motor starte en stopte met ondersteunen.</p>
+<pre class="r"><code>load(&quot;Rdata/fiets1part1.Rda&quot;)
+
+# verander naam in het kortere &quot;p1&quot;
+p1 &lt;- fiets1part1
+remove(fiets1part1)
+
+# part 1
+dfhead &lt;- head(p1, 3000)
+plot(dfhead$ta, dfhead$Pa1) # 8</code></pre>
+<p><img src="tutorial_files/figure-html/selectie-1.png" width="672" /></p>
+<pre class="r"><code>dftail &lt;- tail(p1, 30000)
+plot(dftail$ta, dftail$Pa1) # 7830</code></pre>
+<p><img src="tutorial_files/figure-html/selectie-2.png" width="672" /></p>
+<pre class="r"><code>sel &lt;- subset(p1, ta &gt; 8 &amp; ta &lt; 7830)</code></pre>
+<p>Het vermogen van de pedaalaandrijving (Pa1) wordt geplot in functie van de tijd. Als dit daalt betekend dit dat de motor vermogen levert. In de tweede figuur zien we dat de motor in schokken stopte met ondersteunen. We nemen de data tot de motor voor de eerste keer uitviel. De rest wordt niet in rekening gebracht voor tractiecapaciteit. Nu we in de variable <strong>sel</strong> de data van het leegrijden hebben kunnen we het motorvermogen berekenen. <span class="math inline">\(P_{td}\)</span> wordt constant verondersteld over de hele rit.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{motor,2} = P_{td} + P_{FW,2} - P_{c,2} 
+\end{aligned}
+\]</span></p>
+<p>Of in R code:</p>
+<pre class="r"><code>sel$Pmotor &lt;- Pkal - sel$Pa1 + sel$FW</code></pre>
+<p>Dit kunnen we nu omrekenen naar energie, met de kennis dat ded sample tijd van het dataloggen 0.01 s is.</p>
+<pre class="r"><code>Etot &lt;- sum(sel$Pmotor * c(0.01, diff(sel$ta)))
+Ewh &lt;- Etot / 3600 # Joule naar Wh
+print(Ewh)</code></pre>
+<pre><code>## [1] 267.021</code></pre>
+</div>
+<div id="voetnoten" class="section level2">
+<h2>Voetnoten</h2>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Er wordt eigenlijk elektrisch vermogen gemeten aan de crank en verplaatsing en toerental bij de eddy-current rem.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

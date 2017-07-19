@@ -1,0 +1,51 @@
+#cover {
+    background-color: rgb(59, 187, 153);
+}
+
+#cover_rect {
+    width: 70%;
+    height: 80%;
+    background-color: rgba(200, 200, 200, 0.8);
+    /*background-color: white;*/
+    margin: 10px auto;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+}
+#cover_rect img {
+    width: 60%;
+    height: auto;
+}
+/*#cover_rect h2 {
+    margin-bottom: 2%;
+}*/
+ul, ol {
+    margin-left: 50px;
+    font-size: 120%
+}
+.down-arrow {
+    text-align: center;
+    margin: auto;
+}
+
+/* different tittle color or something for the different parts */
+
+.p1 + h2{
+    color: blueviolet;
+}
+
+.p2 + h2 {
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li.future {
+    color: lightgray;
+}
+/*.slide {
+    padding: 8%;
+}*/

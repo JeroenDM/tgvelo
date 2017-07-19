@@ -1,0 +1,5 @@
+naam,maxMaat,minMaat,houding,wet,ontwerpsnelheid,weerstand,nae,helling,bediening,batterij,regeling,staander,shimmy,montage,remmen,verlichting
+fiets_6,1919,1515,0,0,24 km/u,6.5,282,8.8,0.56,0.56,0.60,0.28,0,0.74,3.4,0.35
+fiets_7,1919,1515,0,0,25 km/u,4.9,0,5.6,0.67,0.56,0.25,0.27,0,0.73,2.8,0.37
+fiets_8,1899,1609,0,0,"24,5 km/u",0,0,6.1,0.82,0.67,0.25,0.26,0,0.76,3.1,0.62
+fiets_9,1909,1609,0,0,"22,7 km/u",4.9,351,7.9,0.74,0.63,0.50,0.65,0,0.83,3.2,0.47

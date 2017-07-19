@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html">
+            <button class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+            </button>
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            
+        <h1>Remmen</h1>
+        <h1 class="subtitle">Remcoëfficiënt</h1>
+
+        <p class="intro">Remmen worden weliswaar in de norm opgenomen, maar dit geeft geen garantie dat ze ook daadwerkelijk goed remmen (de genormeerde remweg is vrij lang). TGVelo heeft een alternatieve of bijkomende manier opgesteld om de kwaliteit van remmen te meten.</p>
+        <p class="intro">Opgelet: deze parameter zegt niets over de duurzaamheid van remmen (Hiervoor kan verwezen worden naar de EUMOS 40701 norm) of de warmtedissipatie voor gebruik van remmen op langere hellingen.</p>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Definitie</h2>
+            <p>De basis van de score is de remcoëfficiënt. Die is gedefiniëerd als de verhouding van de remkracht aan het wiel tot de remkracht op de remhendel. Indien de remkracht aan het wiel lager is dan deze aan de hendel is de remcoëfficiënt kleiner dan één, dit wordt als zeer laag beschouwd. De rem krijg een score op 100 berekend als: remcoëfficiënt / 4 * 100. Vanaf 4 is een rem dus heel goed op gebied van remprestatie. Voor cargo fietsen kunnen strengere eisen worden gesteld, in dat geval is de tool onderaan niet bruikbaar.</p>
+            
+            <p>De score wordt dan verder verfijnd op basis van enkele eigenschappen, die al dan niet strafpunten tot gevolg hebben.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="brake_test_setup.PNG" alt="remmentestbank" width=80% />
+        </div>
+        <div class="col-md-12">
+            <h2>Meten</h2>
+            <h3>Remcoëfficiënt</h3>
+            <p>Voor het meten van de remcoëfficiënt heeft men een testbank nodig zoals onder andere in normen EUMOS-40701 of EN14764 beschreven wordt. Het wiel rust op een trommel die aangedreven is. Op de remhendel wordt een klemsysteem geïnstalleerd aangedreven door een servomotor.</p>
+            <div class="col-md-6">
+                <img src="brake_test_bench.png" alt="testbank_TGVelo" width="100%" />
+            </div>
+            <div class="col-md-6">
+                <img src="remhendel.png" alt="testbank_TGVelo" width="100%" />
+            </div>
+            
+            <p>Aan de remhendel wordt 20 N tot 180 N aangebracht in stappen van 20 N. Bij de meeste remmen kan men echter al stoppen bij 140 N of 160 N omdat de remhendel dan tegen het stuur zit. Een remcyclus voor één krachtniveau bestaat uit drie keer 2.5 s remmen met 2 s voorloop zonder remmen voor kalibratie. Tussen elke remcyclus wordt de rem 60 s gekoeld, al dan niet actief.</p>
+            
+            <img src="testprocedure_bc.png" alt="testbank_TGVelo" width="50%" />
+            
+            <h3>Sleepcyclus</h3>
+            
+            <p>Indien de fietsen bestemd zijn voor in heuvels of bergen moet de rem ook blijven presteren bij lang remmen (meer dan 2.5 s). Om dit in te schatten wordt er eerst 30 s geremd met 100 N aan de hendel. Dan, na een pauze van 5 s wordt de remcoëfficiënt terug gemeten met de remcyclus beschreven in vorige paragraaf voor 100 N. Indien deze nu lager dan 1 is kan een strafpunt worden afgetrokken.</p>
+            
+            <h3>Nat wegdek</h3>
+            
+            <p>Remcoëfficiënt en sleepcyclus op de testbank. Remweg nat vs droog weer, zie norm. Gewichtsfactor relatief t.o.v. standaard gewicht (100 kg).</p>
+            
+            <h3>Gewichtsfactor</h3>
+            
+            <p>Indien cargo fietsen getest worden gaat het gemiddelde gewicht van de fiets hoger liggen tijdens gebruikt en is een hogere remcoëfficiënt wenselijk. De standaard remcoëfficiënt kan dan vermenigvuldigd worden met een gewichtsfactor. Deze factor is 100 kg gedeeld door het verwachte gebruiksgewicht. Indien dit bijvoorbeeld 200 kg is wordt een remcoëfficiënt kleiner dan 2 onvoldoende geacht.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Tool om score te berekenen</h2>
+            <form class="form-horizontal">
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="bc">Remcoëfficiënt</label>  
+                  <div class="col-md-4">
+                  <input id="bc" name="bc" type="text" placeholder="3" class="form-control input-md">
+
+                  </div>
+                </div>
+
+                <!-- Multiple Checkboxes -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="remstrafpunten">Strafpunten</label>
+                  <div class="col-md-4">
+                  <div class="checkbox">
+                    <label for="remstrafpunten-0">
+                      <input type="checkbox" name="remstrafpunten" id="remstrafpunten-0" value="1">
+                      Als rem 1 faalt, dan rem 2 ook
+                    </label>
+                    </div>
+                  <div class="checkbox">
+                    <label for="remstrafpunten-1">
+                      <input type="checkbox" name="remstrafpunten" id="remstrafpunten-1" value="2">
+                      bc &lt; 1 na sleepcyclus
+                    </label>
+                    </div>
+                  <div class="checkbox">
+                    <label for="remstrafpunten-2">
+                      <input type="checkbox" name="remstrafpunten" id="remstrafpunten-2" value="3">
+                      remweg x2 bij nat weer
+                    </label>
+                    </div>
+                  <div class="checkbox">
+                    <label for="remstrafpunten-3">
+                      <input type="checkbox" name="remstrafpunten" id="remstrafpunten-3" value="4">
+                      bc &lt; 1 met gewichtsfactor
+                    </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="singlebutton"></label>
+                  <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-success" onclick="calcScore(); return false;">Calculate</button>
+                  </div>
+                </div>
+                
+                <!-- Output result -->
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="singlebutton">Score remmen: <span id="score">50</span> %<br/>
+                    <p style="color: red" id="warning"></p></label>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
+<script>
+    var $warning = document.getElementById("warning");
+    var $checks = document.getElementsByName("remstrafpunten");
+    
+    function calcScore() {
+        var bc = parseFloat( document.getElementById("bc").value );
+        
+        $warning.innerHTML = "";
+        var score = 0;
+        
+        if (bc < 0) {
+            $warning.innerHTML = "De remcoëfficiënt moet een positief getal zijn.";
+        } else if (bc < 1) {
+            // bc < 1 -> score from 0 to 50 %
+            score = bc * 50;
+        } else if (bc < 5) {
+            // bc >= 1 < 5 -> score from 50 to 100 %
+            score = (bc - 1) / 4 * 50 + 50;
+        } else {
+            score = 100;
+        }
+        
+        var i;
+        var strafpunten = 0;
+        for(i = 0; i < $checks.length; ++i) {
+            strafpunten += $checks[i].checked * 10;
+        }
+        console.log(strafpunten);
+        
+        score -= strafpunten;
+        score = Math.max(score, 0);
+        
+        document.getElementById("score").innerHTML = Math.round(score);
+    }
+</script>
+ 
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+    
+</body>
+</html>

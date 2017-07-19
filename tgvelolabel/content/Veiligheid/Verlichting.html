@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+<style type="text/css">
+    table {
+        table-layout: fixed;
+        width: 50%;
+    }
+    td {
+        padding: 0px;
+        width: 16%; /* 100% / 6 columns */
+    }
+    input {
+        width: 100%;
+    }
+</style>
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    
+        <div class="col-md-12">
+            <h1>Verlichting</h1>
+            <h1 class="subtitle">Hoe goed wordt de rijweg verlicht door de fiets?</h1>
+
+            <p class="intro">De kwaliteitsparameter 'verlichting' duidt aan hoeveel lichtstroom er door het voorlicht gegeven wordt en hoe effectief deze lichtstroom gericht wordt op de weg, zodat de fietser kan zien waar hij rijdt.</p>
+        </div>
+        <div class="col-md-12">
+            <h2>Definitie</h2>
+
+            <p>Deze score is een vergelijking met het maximaal haalbare.Een hoge score betekent:</p>
+            <ul>
+                <li>De fiets heeft een spot die ver straalt.</li>
+                <li>De grond voor de fiets wordt goed verlicht.</li>
+                <li>Er is strooilicht naar de zijkanten.</li>
+                <li>Er is een breed (tot 3 m) oppervlak in de verte die goed verlicht wordt.</li>
+            </ul>
+        </div>
+        
+      
+        
+    <div class="col-md-12">
+        <h2>Meten</h2>
+            <p>De score is gebaseerd op lichtmetingen in een donkere ruimte.<br>
+            De verlichtingssterkte wordt gemeten op verschillende punten voor de fiets. Met de fiets in rechte positie (volle batterij of aan 20 km/u in het geval van voeding door een naafdynamo) worden verlichtingssterktes gemeten in punten op de grond en verticaal op 3 m afstand van de lichtbron, volgens onderstaand schema.<br>
+            
+            </p>
+    </div>
+   
+        
+    <div class="col-md-12">
+        <h2>Berekenen</h2>
+            <p>Vul hieronder de verkregen waarden in</p>
+            <table>
+                <tr>
+                    <td></td>
+                    <th>midden</th>
+                    <th>+30 cm</th>
+                    <th>+60 cm</th>
+                    <th>+90 cm</th>
+                    <th>+120 cm</th>
+                    <th>+150 cm</th>
+                </tr>
+                <tr>
+                    <th>3 m x 1 m</th>
+                    <td><input type="text" name="A" placeholder="A1"></td>
+                    <td><input type="text" name="A" placeholder="A2"></td>
+                    <td><input type="text" name="A" placeholder="A3"></td>
+                    <td><input type="text" name="A" placeholder="A4"></td>
+                    <td><input type="text" name="A" placeholder="A5"></td>
+                    <td><input type="text" name="A" placeholder="A6"></td>
+                </tr>
+                <tr>
+                    <th>3 m x 0.75 m</th>
+                    <td><input type="text" name="A" placeholder="B1"></td>
+                    <td><input type="text" name="A" placeholder="B2"></td>
+                    <td><input type="text" name="A" placeholder="B3"></td>
+                    <td><input type="text" name="A" placeholder="B4"></td>
+                    <td><input type="text" name="A" placeholder="B5"></td>
+                    <td><input type="text" name="A" placeholder="B6"></td>
+                </tr>
+                <tr>
+                    <th>3 m x 0.5 m</th>
+                    <td><input type="text" name="A" placeholder="C1"></td>
+                    <td><input type="text" name="A" placeholder="C2"></td>
+                    <td><input type="text" name="A" placeholder="C3"></td>
+                    <td><input type="text" name="A" placeholder="C4"></td>
+                    <td><input type="text" name="A" placeholder="C5"></td>
+                    <td><input type="text" name="A" placeholder="C6"></td>
+                </tr>
+                <tr>
+                    <th>3 m x 0.5 m</th>
+                    <td><input type="text" name="A" placeholder="D1"></td>
+                    <td><input type="text" name="A" placeholder="D2"></td>
+                    <td><input type="text" name="A" placeholder="D3"></td>
+                    <td><input type="text" name="A" placeholder="D4"></td>
+                    <td><input type="text" name="A" placeholder="D5"></td>
+                    <td><input type="text" name="A" placeholder="D6"></td>
+                </tr>
+                <tr>
+                    <th>3 m x 0.5 m</th>
+                    <td><input type="text" name="A" placeholder="E1"></td>
+                    <td><input type="text" name="A" placeholder="E2"></td>
+                    <td><input type="text" name="A" placeholder="E3"></td>
+                    <td><input type="text" name="A" placeholder="E4"></td>
+                    <td><input type="text" name="A" placeholder="E5"></td>
+                    <td><input type="text" name="A" placeholder="E6"></td>
+                </tr>
+                <tr>
+                    <th>3 m x 0.5 m</th>
+                    <td><input type="text" name="A" placeholder="F1"></td>
+                    <td><input type="text" name="A" placeholder="F2"></td>
+                    <td><input type="text" name="A" placeholder="F3"></td>
+                    <td><input type="text" name="A" placeholder="F4"></td>
+                    <td><input type="text" name="A" placeholder="F5"></td>
+                    <td><input type="text" name="A" placeholder="F6"></td>
+                </tr>
+            </table>
+    </div>
+        
+    <button type="button" class="btn btn-success" onclick="calcScore(); return false;">Update score</button>
+    <p>Score is: <span id="score">0</span> eenheid</p>
+        <p>Opmerking: Sommige verstralers die gebruikt worden op MTB's of speed pedelecs hebben lichten die niet op deze schaal passen, de test is hier mogelijk minder voor geschikt.</p>
+     
+</div>
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+
+<!-- dependencies for d3 -->
+<!--<script src="../../js/d3.min.js"></script>-->
+<!-- custom javascript -->
+<script>
+    var values; // nog andere naam geven
+    function add(a, b) {
+        return a + b;
+    }
+    
+    // functies om specifieke gebieden te selecteren
+    function getZoneA(array) {
+        return array.slice(3, 6).concat( array.slice(9, 12) ).concat( array.slice(15, 18) );
+    }
+    function getZoneB(array) {
+        return array.slice(21, 24).concat( array.slice(27, 30) ).concat( array.slice(33, 36) );
+    }
+    
+    var $lux = document.getElementsByName("A");
+    var N = $lux.length;
+    
+    $lux.forEach(function(element) {
+        element.value = 0;
+    });
+    
+    function calcScore() {
+        values = [];
+        $lux.forEach(function(element) {
+            values.push(parseFloat( element.value ));
+        });
+        
+        var score = values.reduce(add);
+        var scoreA = getZoneA(values).reduce(add);
+        var scoreB = getZoneB(values).reduce(add);
+        
+        // ver stralen: 
+        
+        document.getElementById("score").innerHTML = score + " A: " + scoreA + " B: " + scoreB;
+    }
+    
+</script>
+ 
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* Make the maximum width of the page smaller
+for artistic purpose*/
+@media (min-width: 1200px) {
+  .container {
+    width: 900px;
+  }
+}
+
+body {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1.subtitle {
+    font-size: 1.5em;
+    color: gray;
+}
+
+h2 {
+    font-size: 200%;
+    /*border-bottom: 1px solid #2980b9;*/
+    padding: 5px;
+    margin-top: 30px;
+    background-color: lightgrey;
+}
+
+#footer {
+  text-align: center;
+    margin-top: 50px;
+}
+
+/*
+Add small icon after some list items
+stats "\e185"
+flash "\e162"
+*/
+
+li.el:after {
+	content: "\e162";
+	font-family: 'Glyphicons Halflings';
+	font-size: 9px;
+	/*float: left;*/
+	margin-left: 3px;
+	color: black;
+}
+
+li.tool:after {
+	content: "\e185";
+	font-family: 'Glyphicons Halflings';
+	font-size: 9px;
+	/*float: left;*/
+	margin-left: 3px;
+	color: black;
+}
+
+li.tool.el:after {
+    content: "\e162 \e185";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    /*float: left;*/
+    margin-left: 3px;
+    color: black;
+}
+
+.intro {
+    width: 70%;
+    margin-left: 15%;
+    padding: 15px;
+    border: 0px solid black;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+/* large first letter, may not work in all browsers (css3)*/
+p.intro::first-letter { 
+    float: left;
+    color: black;
+    font-size: 40px;
+    line-height: 40px;
+    padding-right: 4px;
+    padding-left: 3px;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TGVelo label</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+<link rel="stylesheet" href="../../css/jqmath-0.4.3.css">
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            
+        <h1>Hellingsgraad</h1>
+        <h1 class="subtitle">bij 10 km/u</h1>
+
+        <p class="intro">Er zijn verschillende technische parameters die kunnen beschrijven hoe krachtig de motor aanvoelt. Enkele voorbeelden zijn maximum koppel of motorvermogen. TGVelo heeft een parameter gezocht die zoveel mogelijk samenvat en zo begrijpbaar mogelijk is. Het resultaat van deze zoektocht is de maximale hellingsgraad.</p>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Definitie</h2>
+            <p>De hellingsgraad is een berekend getal, en duidt aan hoe sterk de motor is. Hoe groter dit getal, hoe steilere hellingen er mee kan opgereden worden, of hoe sneller kan opgetrokken worden. De hellingsgraad is de helling die de fiets met volle belading theoretisch kan overwinnen enkel op motor aan 10 km/u, uitgedrukt in %.</p>
+            <img src="helling.jpg" alt="helling" width="90%" />
+        </div>
+        
+        <div class="col-md-6">
+            <h2>Meten</h2>
+            <p>De fiets wordt aangedreven op een testbank met 100 W aan de pedalen en kadans zo dicht mogelijk bij 60 rpm, in het maximale assistentieniveau. De weerstand van de testbank wordt zo ingesteld dat de fiets onder deze omstandigheden 10 km/u haalt. Het weerstandsvermogen waarbij dit bereikt wordt kan nu gebruikt worden als input voor de berekeking. De maximale <a href="http://www.fietsica.be/hellingsgraad_etc_.htm" target="_blank">hellingsgraad</a> wordt berekend op basis van het vermogen dat beschikbaar is voor stijgen.</p>
+            
+            <form>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Vermogen bij 10 km/u</label>
+                        <p>Totale vermogen gemeten aan wiel bij 10 km/u</p>
+                        <input type="text" id="vermogen10"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Massa fiets + fietser</label>
+                        <p></p>
+                        <input type="text" id="massa"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>CdA</label>
+                        <p>Luchtweerstand</p>
+                        <input type="text" id="CdA"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Cr</label>
+                        <p>Rolweerstand</p>
+                        <input type="text" id="Cr"/>
+                    </div>
+                    <div class="form-group">
+                    <button type="button" class="btn btn-success" onclick="calcHelling()">Calculate</button>
+                    </div>
+                </div>
+            </form>
+            <h4><b>Hellingsgraad: </b> <span id="helling">0</span> %</h4>
+        </div>
+    </div>
+    
+    <div class="row">
+        <h2>Details berekening hellingsgraad uit vermogen</h2>
+        
+        <p>Hellingsgraad is gedefinieerd als de verhouding van de gestegen afstand tot de horizontaal afgelegde afstand. Als de hellingsgraad en de snelheid gekend is kan dus de gestegen afstand per tijdseenheid berekend worden. We gaan er vanuit dat de snelheid horizontaal (dezelfde richting als de afgelegde horizontale afstand) gegeven is</p>
+        
+        <p>\[\table v_v =  hg ⋅ v_h\]</p>
+        
+        <p>In de praktijk gaat alleen de snelheid evenwijdig met het wegdek gekend zijn. De horizontale snelheid kan hieruit berekend worden als $v_h = v⋅cos(φ)$. Voor realistische hellingen is de hoek φ meestal beperkt. De horizontale snelheid is dan zo goed als gelijk aan de snelheid evenwijdig met het wegdek. Uit deze stijgsnelheid $v_v$ volgt dan het stijgvermogen $P_v$ (met g de gravitatieconstante = 9.81 m/s^2, en als massa de totale massa van fiets en fietser en standaard belading).</p>
+        
+        <p>\[\table P_v = v_v ⋅ m ⋅ g \]</p>
+        
+        <p>Omvormen van deze formules geeft ons de hellingsgraad in functie van het beschikbare vermogen om te stijgen.</p>
+
+        <p>\[\table hg = P_v / {m * g * v_h} \]</p>
+        
+        <p>Niet al het vermogen aan het wiel kan gebruikt worden voor het stijgen. Een deel gaat verloren in rol- en luchtweerstand.</p>
+        
+        <p>\[\table P_v = P_{tot} - v ⋅ (m ⋅ g ⋅ Cr + 0.5 ⋅ ρ ⋅ C_d A ⋅ v^2) \]</p>
+            
+    </div>
+    
+</div>
+    
+<script>
+    function parseInput() {
+        var vermogen = parseInt( document.getElementById("vermogen10").value );
+        var CdA = parseFloat( document.getElementById("CdA").value );
+        var Cr = parseFloat( document.getElementById("Cr").value );
+        var M = parseFloat( document.getElementById("massa").value );
+
+        return {"P": vermogen, "CdA": CdA, "Cr": Cr, "M": M};
+    }
+    function calcHelling() {
+        var input = parseInput();
+        const V = 10 / 3.6;
+
+        var Pres = V * ( input.M * 9.81 * input.Cr + 0.5 * 1.225 * input.CdA * V*V);
+        var helling = (input.P - Pres) / (input.M * 9.81 * V);
+
+        document.getElementById("helling").innerHTML = Math.round( helling * 10000 ) / 100;
+    }
+</script>
+<!-- custom javascript -->
+<script src="../../js/jquery-1.4.3.min.js"></script>
+<script src="../../js/jqmath-etc-0.4.4.min.js" charset="utf-8"></script>
+ 
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+    
+</body>
+</html>

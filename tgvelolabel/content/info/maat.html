@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maatsysteem</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+    
+<style>
+    /* svg drawing style */
+    line {
+        stroke: black;
+        stroke-width: 2px;
+    }
+    text[id] {
+        font-weight: bold;
+    }
+    #houding {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+    
+    polygon.arrow {
+        stroke: black;
+        fill: black;
+    }
+    
+    svg {
+        display: block;
+    }
+    
+    div.stretch {
+        font-size: 16px;
+        width: 208px; /* image width */
+        text-align:justify;
+        border-top: 1px solid black;
+        line-height: 10px;
+        padding-top: 5px;
+    }
+
+    span.stretch {
+        background-color: red;
+        width:100%;
+        height:1px;
+        display:inline-block;
+    }
+</style>
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            
+        <h1>TGVelo maatsysteem</h1>
+        <h1 class="subtitle">Wie past er op een fiets?</h1>
+            
+        <p class="intro">Bij dagelijks gebruik is een comfortabele houding op de fiets belangrijk. Enkel op basis van de framemaat is het moeilijk om te beslissen of een fiets past. Het TGVelo label introduceert twee essentiële aspecten voor een passende fiets. Enerzijds wordt de minimale en maximale lichaamslengtes gedefinieerd die comfortabel op de fiets passen. Anderzijds wordt een hoek gedefineerd die zithouding aanduidt.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Lichaamslengte geschikt voor de fiets</h2>
+            <p>Voor de bepaling van de geschikte lichaamslengtes wordt gebruik gemaakt van de zadellengte. Er wordt uitgegaan van de vuistregel dat de zadellengte ongeveer 1,1 maal de binnenbeenlengte moet bedragen (Dit is een eerder kleine factor, zadels zullen vaak nog wat hoger kunnen gezet worden). Om van binnenbeenlengte naar lichaamslengte te gaan, werd gebruikt gemaakt van ergonomische tabellen. De "geschikte lichaamslengte" kan op deze manier nooit absoluut gebruikt worden, maar geeft een aanduiding van de geschiktheid van de fiets voor mensen van een bepaalde lengte, op basis van de lichaamsverhoudingen.</p>
+            <p>Voer de meting uit voor zadel in hoogste en laagste stand met volgende definitie (afmetingen in meter):</p>
+            <p><b>Lz =</b> Zadellengte, de grootst mogelijke afstand tussen het snijpunt van zadeloppervlak en hartlijn van de zadelbuis tot het oppervlak van de pedaal.
+</p>
+                            <div class="col-md-6">
+                    <img src="bike_size.png" width="100%" alt="Bike geometrics" />
+                </div>
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Lz laag</label>
+                    <input type="number" class="form-control" id="Lzmin" placeholder=0 min=0 max=200 value="0.8">
+                </div>
+                <div class="form-group">
+                    <label>Lz hoog</label>
+                    <input type="number" class="form-control" id="Lzmax" placeholder=0 min=0 max=200 value="1">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" onclick="sizeModule.calcSize()">Calculate</button>
+                </div>
+            </form>
+            
+            <br/>
+            <div class="row">
+                <div class="col-md-6">
+                <!-- svg drawing containing the body length schematic -->
+                <svg width="100%" height="200px">
+                    <rect width=50 height=30 x=110 y=0 fill="lightgrey" />
+                    <text x=100 y=20 text-anchor="end">Fiets te klein</text>
+
+                    <rect width=50 height=20 x=110 y=30 fill="orange" />
+                    <text x=100 y=40 text-anchor="end">Past misschien</text>
+
+                    <rect width=50 height=100 x=110 y=50 fill="green" />
+
+                    <rect width=50 height=20 x=110 y=150 fill="orange" />
+                    <text x=100 y=160 text-anchor="end">Past misschien</text>
+
+                    <rect width=50 height=30 x=110 y=170 fill="lightgrey" />
+                    <text x=100 y=190 text-anchor="end">Fiets te groot</text>
+
+                    <line x1=110 y1=30 x2=200 y2=30 />
+                    <line x1=110 y1=50 x2=200 y2=50 />
+                    <line x1=110 y1=150 x2=200 y2=150 />
+                    <line x1=110 y1=170 x2=200 y2=170 />
+
+                    <text x=210 y=30 id="maxmaxLengte">0 cm</text>
+                    <text x=210 y=50 id="maxLengte">0 cm</text>
+                    <text x=210 y=150 id="minLengte">0 cm</text>
+                    <text x=210 y=170 id="minminLengte">0 cm</text>
+                </svg>
+                </div>
+
+            </div>
+            
+            <h2>Houding op de fiets</h2>
+            
+            <p>Om te bepalen welke houding een fietser op een fiets zal aannemen moeten andere maten opgenomen worden op een fiets. Onderstaande tool helpt om een beeld te geven welke houding een fietser min of meer zal hebben. Het cijfer dat berekend wordt geeft een aanduiding in welke mate de rug naar voor zal hellen op de fiets. Een kleiner cijfer geeft een sportievere houding aan.
+            <br>Er wordt ook een aanduiding gegeven of de fietser in "Hollandse houding" kan fietsen of niet. De Hollandse houding wordt gekenmerkt door een rechte, min of meer verticale rug, waarbij de armen licht gebogen ontspannen op het stuur kunnen leunen, zoals men op een paard zou rijden.</p>
+            
+            <p><b>Hz</b> Zadelhoogte, de kortst mogelijke afstand tussen het oppervlak van het zadel en de grond.</p>
+            <p><b>Hs</b> Stuurhoogte, de kortst mogelijke afstand tussen de verbinding van de centra van de handvatten tot de grond.</p>
+            <p><b>Ls</b> Stuurlengte of zitlengte, de afstand tussen de verbinding van de centra van de handvatten tot het snijpunt van zadeloppervlak en hartlijn van de zadelbuis, evenwijdig met de grond gemeten.</p>
+            
+            <h4>Tool</h4>
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Lz</label>
+                    <input type="number" class="form-control" id="Lz" placeholder=1.2 value="1.2"> m zadellengte  
+                </div>
+            </form>
+    
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Hz</label>
+                    <input type="number" class="form-control" id="Hz" placeholder=1 value="1"> m zadelhoogte 
+                </div>
+            </form>
+            
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Hs</label>
+                    <input type="number" class="form-control" id="Hs" placeholder=1.2 value="1.2"> m stuurhoogte
+                </div>
+            </form>
+            
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Ls</label>
+                    <input type="number" class="form-control" id="Ls" placeholder=1.2 value="1.2"> m stuurlengte 
+                </div>
+            </form>
+            
+            <div class="col-md-6">
+                
+            </div>
+ 
+            <div class="col-md-6">
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <br>
+                            <button type="button" class="btn btn-success" onclick="sizeModule.calcPost()">Calculate</button>
+                        </div>
+                    </form>
+                    <br>
+                    <svg width=208 height=10>
+                        <polygon class="arrow1" points="0,0 10,10 20,0" fill="green"/>
+                        <polygon class="arrow2" points="0,0 10,10 20,0" fill="green"/>
+                    </svg>
+                    <div class="stretch">90 | 80 | 70 | 60 | 50 <span class="stretch"></span></div>
+                    <img id="houding" src="houding.png" alt="houding" width=208 height=76 />
+                    <svg width=208 height=10>
+                        <!--<polygon class="arrow3" points="0,10 10,0 20,10" fill="orange"/>-->
+                        <!--<polygon class="arrow4" points="0,10 10,0 20,10" fill="green"/>-->
+                    </svg>
+                </div>
+            </div>
+            
+            <h2>Houding op de fiets (stuur instelbaar)</h2>
+            
+            <p>Indien het stuur instelbaar is, zijn er meer mogelijkheden om de houding aan te passen. Dit houdt ook in dat er meer parameters gemeten moeten worden om een volledig beeld te krijgen van de mogelijke houdingen.</p>
+            
+            <p><b>Hz</b> Zadelhoogte, de kortst mogelijke afstand tussen het oppervlak van het zadel en de grond.</p>
+            <p><b>Hs</b> Stuurhoogte, de kortst mogelijke afstand tussen de verbinding van de centra van de handvatten tot de grond.</p>
+            <p><b>Ls</b> Stuurlengte of zitlengte, de afstand tussen de verbinding van de centra van de handvatten tot het snijpunt van zadeloppervlak en hartlijn van de zadelbuis, evenwijdig met de grond gemeten.</p>
+            
+            <h3>Stuurhoogte</h3>
+            <p>Voor het stuur worden twee uiterste posities bekeken. zo ver mogelijk van het zadel en een positie zo dicht mogelijk bij het zadel. In deze twee uiterste posities meten we nu de <b>hoogte van het stuur boven de grond</b>.</p>
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Hs dicht bij zadel</label>
+                    <input type="number" class="form-control" id="Hsmin2" placeholder=1 value="1">
+                </div>
+                <div class="form-group">
+                    <label>Hs ver van zadel</label>
+                    <input type="number" class="form-control" id="Hsmax2" placeholder=1.1 value="1.1">
+                </div>
+            </form>
+ 
+            <h3>Zadelhoogte</h3>
+            <p>Het zadel heeft ook twee uiterste posities, zo hoog en zo laag mogelijk. Ook deze twee hoogtes boven de grond worden opgemeten.</p>
+            <form class="form form-inline">
+                <div class="form-group">
+                    <label>Hz laag</label>
+                    <input type="number" class="form-control" id="Hzmin2" placeholder=0.8 value="0.8">
+                </div>
+                <div class="form-group">
+                    <label>Hz hoog</label>
+                    <input type="number" class="form-control" id="Hzmax2" placeholder=0.9 value="0.9">
+                </div>
+            </form>
+                
+            <h3>Afstand tussen stuur en zadel</h3>
+            <p>Op basis van twee stuurposities en twee zadelposities hebben we vier mogelijke combinaties met een verschillende horizontale afstand tussen stuur en zadel.</p>
+            
+            <div class="col-md-6">
+                <form class="form">
+                    <div class="form-group" style="background-color: lightgreen">
+                        <label >Stuur dicht + zadel laag</label>
+                        <input type="number" class="form-control" id="Lsdl" placeholder=0.6 min=0 max=200 value="0.6">
+                    </div>
+                    <div class="form-group" style="background-color: skyblue">
+                        <label>Stuur dicht + zadel hoog</label>
+                        <input type="number" class="form-control" id="Lsdh" placeholder=0.7 min=0 max=200 value="0.7">
+                    </div>
+                </form>
+            </div>
+            
+            <div class="col-md-6">
+                <form class="form">
+                    <div class="form-group" style="background-color: indianred">
+                        <label>Stuur ver + zadel laag</label>
+                        <input type="number" class="form-control" id="Lsvl" placeholder=0.6 min=0 max=200 value="0.6">
+                    </div>
+                    <div class="form-group" style="background-color: darkorange">
+                        <label>Stuur ver + zadel hoog</label>
+                        <input type="number" class="form-control" id="Lsvh" placeholder=0.6 min=0 max=200 value="0.7">
+                    </div>
+                </form>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2">   
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <br>
+                            <button type="button" class="btn btn-success" onclick="sizeModule.calcPost2()">Calculate</button>
+                        </div>
+                    </form>
+                    <br>
+                    <svg width=208 height=10>
+                        <polygon class="arrow12" points="0,0 10,10 20,0" fill="lightgreen"/>
+                        <polygon class="arrow22" points="0,0 10,10 20,0" fill="skyblue"/>
+                    </svg>
+                    <div class="stretch">90 | 80 | 70 | 60 | 50 <span class="stretch"></span></div>
+                    <img id="houding" src="houding.png" alt="houding" width=208 height=76 />
+                    <svg width=208 height=10>
+                    <polygon class="arrow32" points="0,10 10,0 20,10" fill="indianred"/>
+                    <polygon class="arrow42" points="0,10 10,0 20,10" fill="darkorange"/>
+                    </svg>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    
+
+ 
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+
+<!-- dependencies for d3 -->
+<script src="../../js/d3.min.js"></script>
+<!-- custom javascript -->
+<script src="../../js/maat.js"></script>  
+    
+</body>
+</html>

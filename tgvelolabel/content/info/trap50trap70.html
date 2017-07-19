@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+<link rel="stylesheet" href="../../css/jqmath-0.4.3.css">
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Trap 50 en Trap 70</h1>
+            <h1 class="subtitle">Bereik van de versnellingen</h1>
+
+            <p class="intro">Als men bij de aankoop van een elektrische fiets de versnellingen bespreekt, wordt de focus al snel vernauwd tot het aantal versnellingen en het type versnelling. De belangrijkste factor in de keuze van een fiets is nochtans het verzet of de verhouding die bestaat tussen de snelheid van de trappers en die van de fiets. Er bestaan verschillende manieren om deze verhouding aan te duiden. Voor het TGVelo label werd gekozen voor een zeer aanschouwelijke manier.</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Definitie</h2>
+
+            <p>De <b>trap 50</b> is de snelheid die de fiets bereikt in lichtste versnelling als de fietser de pedalen ronddraait aan 50 toeren per minuut. Het is de laagste snelheid waarbij de fietser theoretisch nog vlot de pedalen kan ronddraaien bij betrekkelijk hoge belasting.</p>
+
+            <p>De <b>trap 70</b> is de snelheid die de fiets bereikt in zwaarste versnelling als de fietser de pedalen ronddraait aan 70 toeren per minuut. Als men er van uitgaat dat de fietser niet graag heel snel trapt, is dit de hoogste snelheid waarbij de fietser nog min of meer comfortabel kan meetrappen.</p>
+            
+            <img src="trap5070.png" alt="SchemaTrap50Trap70" width="80%" />
+        </div>
+        <div class="col-md-6">
+            <h2>Meten</h2>
+
+            <p>De trap 50 en trap 70 zijn heel eenvoudig thuis op te meten. Schakel de fiets in lichtste / zwaarste versnelling, meet hoever de fiets verplaatst is in meter, vermenigvuldig met 50 of 70, en men heeft de verzetsnelheid in meter per minuut. Vermenigvuldig met 0,6 en men heeft de verzetsnelheid in km/u.</p>
+            
+            <form class="form-inline">
+                  <div class="form-group">
+                    <label>Afgelegde weg in meter</label>
+                    <p>Afstand afgelegd bij één pedaalomwenteling</p>
+                    <input type="number" class="form-control" id="distance" placeholder=0 min=0 max=10 value = 0>
+                    <span class="unit">m</span>
+                  </div>
+            </form>
+            <br/>
+            <form class="form">
+                <div class="form-group">
+                    <label>Versnelling</label>
+                    <p>Zwaarste of lichtste versnelling?</p>
+                    <select class="form-control" id="selectRpm">
+                      <option value=0>Lichtste versnelling</option>
+                      <option value=1>Zwaarste versnelling</option>
+                    </select>
+                  </div>
+            </form>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label>Snelheid @ <span id="outputRpm">50</span> rpm</label>
+                    <p><span id="speed">99</span> km/u</p>
+                </div>
+                <button type="button" class="btn btn-success" onclick="calcSpeed()">Update</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Lessen voor een eenvoudige fietsbeoordeling</h2>
+            <p>Tabellen om het versnellingsbereik van verschillende systemen te vergelijken hebben niet veel praktisch nut zonder de informatie over de bandenmaat en de overbrengingsverhouding tussen de tandwielen waar de ketting op loopt. Om een goede fietskeuze te maken moet men het snelheidsgebied kennen, de trappen 50 en 70 kiezen, en dan beoordelen  of men voldoende stappen heeft in het snelheidsgebied waar de fiets het meest gebruikt zal worden. Veel elektrische fietsen hebben in praktijk slechts 2 versnellingen nodig, of worden slechts in 1 verzet gebruikt.</p>
+        </div>
+    </div>
+        
+	<div class="row">
+        <div class="col-md-12">
+            <h2>Vergelijk verschillende interne versnelsnaven</h2>
+        </div>
+		<div class="col-md-4">
+        <p>Met deze tool kun je verschillende versnellingssystemen vergelijken.</p> 
+			<form class="form">
+			  <div class="form-group">
+			    <label>Diameter achterwiel</label>
+                  <p>In inch!</p>
+					<select class="form-control" id="wheelSize">
+					  <option value=28>28 inch</option>
+					  <option value=26>26 inch</option>
+					</select>
+			  </div>
+			  <div class="form-group">
+			    <label># tanden vooraan</label>
+                  <p> Aantal tanden op het kettingblad vooraan</p>
+			    <input type="number" class="form-control" id="front" placeholder=46 min=10 max=80 value="46">
+			  </div>
+			  <div class="form-group">
+			    <label># tanden achteraan</label>
+                  <p>Aantal tanden op het kettingblad achteraan</p>
+			    <input type="number" class="form-control" id="back" placeholder=22 min=5 max=50 value = 22>
+			  </div>
+				<!-- // page refreshes because button is in form tag.
+				// therefore add ;return false; to the onclick callback -->
+				<button type="button" class="btn btn-success" onclick="update()">Update</button> <!--return false;-->
+			</form>
+		</div>
+
+		<div class="col-md-8">
+            <div class="chartArea">
+                <h3>Snelheidsbereik [km/u]</h3>
+                <div class="caption">
+                    <p>Snelheidsbereik gebasseerd op een kadans van 50 rpm voor de ondergrens en 70 rpm voor de bovengrens.</p>
+                </div>
+                <div class = "chart" style="overflow-x: scroll;">
+                </div>
+            </div>
+		</div>
+	</div>
+        
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Details van de berekeningen</h2>
+        </div>
+        <div class="col-md-6">
+        <h3>Lijst met symbolen</h3>
+            <p><b>$ω_c$</b> Rotatiesnelheid pedalen / kadans in rpm (toeren per minuut)</p>
+            <p><b>$D_w$</b> Diameter achterwiel in inch.</p>
+            <p><b>$T_c$</b> Aantal tanden op het kettingblad vooraan.</p>
+            <p><b>$T_r$</b> Aantal tanden op het kettingblad achteraan.</p>
+            <p><b>$r_{min}$</b> Laagste verzet</p>
+            <p><b>$r_{max}$</b> Hoogste verzet</p>
+        <h3>Gemeten afstand naar snelheid</h3>
+            <p>Wanneer de afstand voor één pedaalomwenteling gekend is (in m), dan kan de snelheid (in km/u) voor een specifieke kadans (in rpm) berekend worden.</p>
+            <p>$v = \text"afstand" ⋅ ω_c ⋅ 0.06$</p>
+        </div>
+        <div class="col-md-6">
+            <h3>Trap 50</h3>
+            
+            <p>The laagste comfortabele snelheid wordt berekend op basis van het laagste verzet van de busversnelling $r_{min}$ en een kadans $ω_c$ van 50 rpm.</p>
+            <p>\[\table v_{min}, =, D_w ⋅ 0.0254 ⋅ π ⋅ r_{min} ⋅ T_c / T_r ⋅ ω_c/60 ⋅ 3.6\]</p>
+            <p>Het getal 0.0254 is voor de conversie van inch naar meter. 50 rpm wordt door 60 gedeeld om naar toeren per seconde te gaan. Ten laatste wordt nog eens vermenigvuldigd met 3.6 om naar km/u te gaan. Bijvoordbeeld voor de Rohloff 14 geeft dit onderstaande berekening.</p>
+            <p>\[\table v_{min}, =, 28⋅0.0254⋅3.1415⋅0.279 ⋅ 46 / 22 ⋅ 50/ 60 ⋅ 3.6; , =, 3.9 \text" km/u" \]</p>
+            
+            <h3>trap 70</h3>
+            
+            <p>Analoog kan de hoogste snelheid voor de Rohloff 14 berekend worden op basis van $r_{max}$ en een kadans $ω_c$ van 70 rpm.</p>
+            <p>\[\table v_{min}, =, D_w ⋅ 0.0254 ⋅ π ⋅ r_{max} ⋅ T_c / T_r ⋅ ω_c/60 ⋅ 3.6; , =, 28⋅0.0254⋅3.1415⋅1.467 ⋅ 46 / 22 ⋅ 70/ 60 ⋅ 3.6; , =, 28.8 \text" km/u" \]</p>
+        </div>
+    </div>
+    
+</div>
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+
+<!-- dependencies for d3 -->
+<script src="../../js/d3.min.js"></script>
+<!-- custom javascript -->
+<script src="../../js/jquery-1.4.3.min.js"></script>
+<script src="../../js/jqmath-etc-0.4.4.min.js" charset="utf-8"></script>
+<script src="../../js/trap_modules.js"></script>
+<script src="../../js/trap_main.js"></script>    
+
+</body>
+</html>

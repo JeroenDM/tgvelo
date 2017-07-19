@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Op slot leggen</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+<link rel="stylesheet" href="../../css/jqmath-0.4.3.css">
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Op slot leggen</h1>
+            <h1 class="subtitle">Hoe handig en hoe zeker kan men de fiets veilig achterlaten?</h1>
+
+            <p class="intro">Voor het dagelijks gebruik is het belangrijk dat de fiets met gerust hart kan worden achtergelaten als de bestemming bereikt is. Een goede score voor deze parameter toont enerzijds aan dat er geen te ingewikkelde procedure is om de fiets rijklaar te maken en af te sluiten, en anderzijds dat de beveiliging van de fiets effectief is.</p>
+            <p class="intro">Deze parameter is enkel theoretisch uitgewerkt, U kunt zich laten inspireren om fietsen te vergelijken met elkaar.</p>
+        </div>
+        <div class="col-md-12">
+            <h2>Definitie</h2>
+
+            <p>De score 'Op slot leggen' is een vergelijking met het maximaal haalbare. Een hoge score betekent:</p>
+            <ul>
+                <li>Er zijn weinig handelingen nodig om de fiets stabiel te zetten, af te sluiten en terug startklaar te maken.</li>
+                <li>Er zijn hoogwaardige beveiligingssystemen aanwezig die verhinderen dat de fiets door vreemden weggenomen wordt, en als de fiets toch wordt meegenomen kan hij terug getraceerd worden.</li>
+              
+            </ul>
+        </div>
+  
+      
+            
+    
+        <div class="col-md-12">
+            <h2>Meten</h2>
+
+            <p>De score is gelijk aan het percentage van het maximaal mogelijke punten, dus het gemiddelde van de waardes uit testpunten 1 tot 6. De metingen zijn gebaseerd op observatie, maar er is ook informatie van de fabrikant nodig.<br> </p>
+            
+            <ol>
+                <li>Is er minimum één slot aanwezig dat het gebruik van de fiets kan verhinderen en dat beantwoordt aan EN15496?<br>
+                    <input name="Pauze1" value="0" type="radio">
+                    0=neen<br>
+                    <input name="Pauze1" value="0.5"  type="radio">
+                     ½ = er is een slot aanwezig, maar het kan fout gebruikt worden. Dit kan bijvoorbeeld een losse ketting zijn, of ketting die aan 1 zijde van de ketting aan de fiets vasthangt. Zelfde score wordt gegeven als het slot niet verhindert dat de fiets rolt (bijvoorbeeld stuurslot)<br>
+                    <input name="Pauze1" value="1"  type="radio"> 1 = een slot hangt vast aan de fiets en kan slechts op 1 manier gebruikt worden. Zelfde score als er meerdere sloten aan de eis beantwoorden.<br><br>
+                </li>
+                
+                <li>Enkel als de vorige vraag = 1: Is er een slot aan de fiets vastgemaakt waarmee de fiets aan de wereld kan vastgemaakt worden en dat beantwoordt aan EN15496?<br>
+                    <input name="Pauze2" value="0" type="radio">
+                    0=neen<br>
+                    <input name="Pauze2" value="0.5"  type="radio">
+                     ½ = er is een 'ketting' aanwezig, maar het beantwoordt niet aan de norm.<br>
+                    <input name="Pauze2" value="1"  type="radio"> 1 = ja.<br><br>
+                </li>
+                
+                <li>Is er een niet-verwijderbare individuele identificatie aan de fiets vastgemaakt en bestaat er een opsporingsysteem van de eigenaar?<br>
+                    <input name="Pauze3" value="0" type="radio">
+                    0=neen<br>
+                    <input name="Pauze3" value="0.5"  type="radio">
+                    ½ = er is een serienummer of andere unieke code.<br>
+                    <input name="Pauze3" value="1"  type="radio"> 1 = ja (bijvoorbeeld via een serienummerlogboek, contactgegevens van de fabrikant staan op de fiets)<br><br>
+                </li>
+                
+                <li>Is er een opsporingssysteem van de fiets?<br>
+                    <input name="Pauze4" value="0" type="radio">
+                    0=neen<br>
+                    <input name="Pauze4" value="0.5"  type="radio">
+                    ½ = er is een  systeem waarmee de fiets kan teruggevonden worden als hij gestolen wordt. <br>
+                    <input name="Pauze4" value="1"  type="radio"> 1 = Het opspoorsysteem werkt theoretisch ook nog 10 jaar na aankoop, ook bij abnormaal weinig gebruik, ook met lege tractiebatterij (bij elektrische fietsen) en als de fiets uit staat → Garantie van de fabrikant bekijken?</li><br>
+                
+                <li>Als de fiets op slot is kunnen de onderdelen niet losgemaakt worden met standaard gereedschap (steeksleutels, imbussleutels, griptangen en schroevendraaiers van het type Tx, Ph, Pz en gleuf).<br>
+                    <input name="Pauze5" value="0.25"  type="checkbox">
+                    ¼ = batterij kan niet verwijderd worden zonder sleutel<br>
+                    <input name="Pauze5" value="0.25"  type="checkbox"> ¼ = zadel kan niet verwijderd worden zonder speciaal gereedschap<br>
+                    <input name="Pauze5" value="0.25"  type="checkbox"> ¼ = wielen kunnen niet verwijderd worden zonder speciaal gereedschap<br>
+                    <input name="Pauze5" value="0.25"  type="checkbox"> ¼ = lichten kunnen niet verwijderd worden zonder speciaal gereedschap
+                </li><br>
+                <li> Tel het aantal handelingen die nodig zijn om de fiets stabiel te zetten, af te sluiten, alle nodige onderdelen weg te bergen en terug startklaar te maken en duid hier aan: <br>   
+                    <div class="col-md-4">   
+                    <select id="Pauze6" name="Pauze6" class="form-control"> 
+                        <option value="0">7 of minder handelingen</option>
+                        <option value="1">8 handelingen</option>
+                        <option value="2">9 handelingen</option>
+                        <option value="3">10 handelingen</option>
+                        <option value="4">11 handelingen</option>
+                        <option value="5">12 of meer handelingen</option>
+                    </select>
+                    </div><br>
+                    Voorbeeld 1: op de pikkel zetten - vastleggen met slot - sleutel nemen - sleutel wegsteken - sleutel uit jas nemen - slot openen (elektrisch systeem gaat automatisch aan) - van pikkel duwen = 7 handelingen<br>
+                    Voorbeeld 2: in een fietsrek zetten - beugelslot sluiten - vastleggen met ketting - smartphone nemen - unlocken - app openenen - controleren of connectie gemaakt is en slot gesloten - smartphone opbergen - smartphone nemen - unlocken - app openenen - route kiezen - smartphone in houder zetten = 13 handelingen<br>
+                    De meest gunstige situatie wordt gebruikt. Er mag van uitgegaan worden dat er een haak of een beugel vlakbij is om de fiets vast te leggen.<br>
+                    Als de gebruiksaanwijzing er van uit gaat dat  een Smartphone aanstaat en in een jaszak zit, mag men er van uitgaan dat dit ook zo is.<br>
+                </li>
+                
+            </ol>
+            
+            <h2>Resultaat</h2>
+            <p>Score op <b>diefstalbeveiliging: <span id="diefstal">0</span> %</b> en score op aantal <b>handelingen: <span id="handelingen">0</span> %</b>.</p>
+            <p>Dit geeft een <b>totale score van <span id="totaal">0</span> %</b></p>
+            <button type="button" class="btn btn-success" onclick="calcScore(); return false;">Update score</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+
+<!-- dependencies for d3 -->
+<!--<script src="../../js/d3.min.js"></script>-->
+<!-- custom javascript -->
+<script>
+    var names = ["Pauze1", "Pauze2", "Pauze3", "Pauze4", "Pauze5"];
+    
+    function calcScore() {
+        var scorePauze = 0;
+        var scoreHandelingen = 0;
+        
+        var n;
+        for(n=0; n<names.length; ++n) {
+            var $els = document.getElementsByName(names[n]);
+            
+            var i;
+            for(i=0; i<$els.length; ++i) {
+                if ($els[i].checked) {
+                    scorePauze += parseFloat( $els[i].value );
+                }
+            }
+        }
+        
+        var scoreHandelingen = parseFloat( document.getElementById("Pauze6").value );
+        
+        console.log(scorePauze);
+        console.log(scoreHandelingen);
+        document.getElementById("diefstal").innerHTML = Math.round( scorePauze * 20 );
+        document.getElementById("handelingen").innerHTML = Math.round( scoreHandelingen * 20 );
+        document.getElementById("totaal").innerHTML = Math.round( (scorePauze + scoreHandelingen) * 10 );
+    }
+</script>
+
+</body>
+</html>

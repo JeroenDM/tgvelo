@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bediening</title>
+
+<link rel="stylesheet"  type="text/css"  href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/site_specific.css">
+
+<link rel="stylesheet" href="../../css/jqmath-0.4.3.css">
+    
+<style>
+    .inputlist li {
+        list-style-type: none;
+    }
+</style>
+
+</head>
+    
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+        <a href="../../index_nl.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+        </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Bediening</h1>
+            <h1 class="subtitle">Hoe goed kan men de functies van de fiets bedienen?</h1>
+
+            <p class="intro">Verschillende fietsen laten zich op een verschillende manier bedienen. Remmen, versnellingen, bel, lichten en motorondersteuning hebben hendels, knoppen of draaigrepen nodig om te kunnen functioneren. De kwaliteitsparameter 'bediening' brengt in kaart hoe eenvoudig dit gebeurt.</p>
+        </div>
+        <div class="col-md-12">
+            <h2>Definitie</h2>
+
+            <p>De score 'Bediening' is een vergelijking met het maximaal haalbare. Een hoge score betekent:</p>
+            <ul>
+                <li>Versnellingen worden intuïtief en gemakkelijk bediend</li>
+                <li>Beide remgrepen zijn vlot bereikbaar, ook voor kleine handen</li>
+                <li>De bel kan bediend worden zonder een hand van het stuur te halen</li>
+                <li>Een mogelijk aanwezige motor kan intuiïtief blind bediend worden zonder handen van het stuur te halen</li>
+                <li>Lichten gaan automatisch aan of kunnen bediend worden als men in het zadel zit.</li>
+            </ul>
+            
+            
+        </div>
+        <div class="col-md-12">
+            <h2>Meten</h2>
+
+            <p>De metingen zijn gebaseerd op observatie. Geef een antwoord op onderstaande vragen.
+            </p>
+            
+            <ol>
+                <li>Versnellingen (gemiddelde waardes van punt a tot f)
+ 
+                <ol type="a">
+                    <li>Hoeveel bedieningen zijn er om de overbrengingsverhouding tussen pedalen en wiel te kiezen? <br/>
+                        <select name="ver1" class="form-control"> 
+                            <option value="0">automatische / geen versnellingen</option>
+                            <option value="1">1 bediening (bijvoorbeeld draaigreep)</option>
+                            <option value="2">2 bedieningen (vaak bij derailleurs)</option>
+                            <option value="3">3 of meer bedieningen</option>
+                        </select>
+                    </li>
+                    <li>Kan één van de bedieningen kan in een 'foute' positie gezet worden (geen index of fout gemonteerd: kan zich bijvoorbeeld verraden als ratelende ketting)?
+                    <ul class="inputlist">
+                        <li><input name="ver2" value="1" type="radio"> Ja de bediening kan fout gezet worden.</li>
+                        <li><input name="ver2" value="0" type="radio"> Neen, de bediening is zeer duidelijk.</li>
+                    </ul>
+                    </li>
+                    <li>Is één van de bedieningen omgekeerd gemonteerd?
+                    <ul class="inputlist">
+                        <li><input name="ver3" value="1" type="radio"> Ja</li>
+                        <li><input name="ver3" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li>
+                    <li>Moet een hand opgehoffen worden om de versnellingen te bedienen?
+                    <ul class="inputlist">
+                        <li><input name="ver4" value="1" type="radio"> Ja</li>
+                        <li><input name="ver4" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li>
+                    <li>Verbiedt de gebruiksaanwijzing schakelen bij stilstand, of is dit fysiek niet mogelijk?
+                        <ul class="inputlist">
+                            <li><input name="ver5" value="0" type="radio">de versnelling kan van zwaarste naar lichtste gezet worden tijdens stilstand</li>
+                            <li><input name="ver5" value="0.5" type="radio">de versnelling kan niet volledig verzet worden, of er zijn bijkomende voorwaarden (bijvoorbeeld er moet eerst achteruit getrapt worden)</li>
+                            <li><input name="ver5" value="1" type="radio">Er kan niet geschakeld worden bij stilstand</li>
+                        </ul>
+                    </li> 
+                    <li>Is het schakelen tijdens het trappen mogelijk?
+                        <ul class="inputlist">
+                            <li><input name="ver6" value="0" type="radio">schakelen tijdens trappen is mogelijk in alle omstandigheden, ook bergop bijvoorbeeld en als er kracht gezet wordt op de pedalen</li>
+                            <li><input name="ver6" value="0.5" type="radio">schakelen tijdens trappen is in sommige omstandigheden mogelijk</li>
+                            <li><input name="ver6" value="1" type="radio">schakelen tijdens trappen is niet mogelijk (kan eventueel getest worden op de e-checker: toerental ongeveer 60 rpm, ongeveer 100W trapaandrijving. Als de versnelling niet geschakeld is binnen 10 rotaties mag aangenomen worden dat het niet mogelijk is. Als het wel mogelijk is om te schakelen bij kleinere belasting, bijvoorbeeld als er geen weerstand gegeven wordt aan het wiel, wordt bovenstaande keuze gemaakt.)</li>
+                        </ul>
+                    </li>
+                    </ol></li>
+                <li>Remmen; gemiddelde punt a tot d.
+                <ol type="a">
+                    <li>Wat is de kleinst overmeten afstand La van de achterkant van het stuur tot de voorkant van de linkse rem (rem niet ingedrukt)?
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" id="rem1" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+                    (Berekende waarde = (La - 80) / (100 - 80))</li> 
+                    <li>Kleinst overmeten afstand van de achterkant van het stuur tot de voorkant van de rechtse rem (rem niet ingedrukt).
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" id="rem2" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+                    (Berekende waarde = (La - 80) / (100 - 80))</li> 
+                    <li>Afstand Lb op de linker remhendel waar de grootst overmeten afstand van de achterkant van het stuur tot de voorkant van de remhendel kleiner is dan 100mm.
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" id="rem3" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+                    Berekende waarde = (100 - Lb) / 100</li> 
+                    <li>Afstand op de rechter remhendel waar de grootst overmeten afstand van de achterkant van het stuur tot de voorkant van de remhendel kleiner is dan 100mm.
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" id="rem4" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+                    Berekende waarde = (100 - Lb) / 100</li>
+                </ol></li>
+                <li>Bel: moet de hand worden opgehoffen om de bel te bedienen?
+                    <ul class="inputlist">
+                        <li><input name="bel" value="1" type="radio"> Ja</li>
+                        <li><input name="bel" value="0" type="radio"> Neen</li>
+                    </ul>
+                </li>
+                <li>Motor: Als er geen motor is, waarde nul. Als er een motor is; gemiddelde punt a tot f
+                <ol type="a">
+                    <li>Om de ondersteuning uit te zetten moet het hele systeem uitgezet worden. ( = Geen nul ondersteuning bij de ondersteuningsniveau’s aanwezig)
+                    <ul class="inputlist">
+                        <li><input name="motor1" value="1" type="radio"> Ja</li>
+                        <li><input name="motor1" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li> 
+                    <li>Om het ondersteuningsniveau te veranderen moet een hand opgehoffen worden.
+                    <ul class="inputlist">
+                        <li><input name="motor1" value="1" type="radio"> Ja</li>
+                        <li><input name="motor1" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li> 
+                    <li>Er is geen rechtstreeks commando ‘omhoog’ of ‘omlaag’ ter beschikking
+                    <ul class="inputlist">
+                        <li><input name="motor1" value="1" type="radio"> Ja</li>
+                        <li><input name="motor1" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li> 
+                    <li>Het ondersteuningsniveau moet ingesteld worden via een touch screen (en gaat dus niet met handschoenen).
+                    <ul class="inputlist">
+                        <li><input name="motor1" value="1" type="radio"> Ja</li>
+                        <li><input name="motor1" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li> 
+                    <li>Afstand Lc tussen de centers van de ondersteuningsnknoppen (de knoppen om de ondersteuning te veranderen)
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" id="motor1" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+                    Berekende waarde = (22 - Lc) / (22 - 8)</li> 
+                    <li>Ingeschreven diameter Ld van de kleinste ondersteuningsnknop
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" id="motor2" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+                    Berekende waarde = (22 - Ld) / (22 - 8)</li>
+                </ol></li>
+                <li>Lichten; gemiddelde punt a tot b
+                <ol type="a">
+                    <li>Indien het voorlicht niet automatisch aangaat bij duister: het voorlicht is niet bedienbaar vanaf de zitpositie
+                    <ul class="inputlist">
+                        <li><input name="motor1" value="1" type="radio"> Ja</li>
+                        <li><input name="motor1" value="0" type="radio"> Neen</li>
+                    </ul></li>
+                    <li>Indien het achterlicht niet automatisch aangaat bij duister: het achterlicht is niet bedienbaar vanaf de zitpositie
+                    <ul class="inputlist">
+                        <li><input name="motor1" value="1" type="radio"> Ja</li>
+                        <li><input name="motor1" value="0" type="radio"> Neen</li>
+                    </ul>
+                    </li>
+                </ol>
+                </li>
+            </ol>
+            
+            <h2>Resultaat</h2>
+            <p>Score op <b>bediening: <span id="bediening">100</span> %</b></p>
+            <button type="button" class="btn btn-success" onclick="calcScore(); return false;">Update score</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Praktisch</h2>
+            <p>Een groot voordeel van de fietsindustrie is de modulariteit van de onderdelen; het is vrij eenvoudig om een werkend 'Human Machine Interface' samen te stellen die werkt. Het gevaar van die modulariteit echter is dat het ook heel eenvoudig is om een combinatie te maken die eigenlijk niet optimaal is. Zeker bij elektrische fietsen wordt het stuur gemakkelijk volgezet met bedieningen die niet noodzakelijk bij elkaar passen. Veel remgrepen zijn bijvoorbeeld te kort om goed te combineren met een draaischakelaar. Het gevolg is dat mensen met kleine handen eigenlijk niet goed aan de remgrepen kunnen.</p>
+        </div>
+    </div>
+     
+</div>
+
+<!-- End credits at the bottom of the page, contact information and names -->
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">
+            Contact: <a href="mailto:tgveloteam@gmail.com">tgveloteam@gmail.com</a><br>
+            Gemaakt door Dries Callebaut en Jeroen De Maeyer <br>
+            Layout gebaseerd op <a href="http://getbootstrap.com/css/" target="_blank">Bootstrap CSS</a>
+        </p>
+    </div>
+</div>
+
+<!-- dependencies for d3 -->
+<script src="../../js/d3.min.js"></script>
+<!-- custom javascript -->
+<script>
+    var names = ["ver1", "ver2", "ver3", "ver4", "ver5", "ver6"];
+    var strafpuntenBediening;
+    
+    function calcScore() {
+        strafpuntenBediening = 0;
+        console.log(strafpuntenBediening);
+        
+        var n;
+        for(n=0; n<names.length; ++n) {
+            var $els = document.getElementsByName(names[n]);
+            
+            if ($els.length == 1) {
+                console.log("in for loop, if: " + strafpuntenBediening);
+                strafpuntenBediening += parseFloat( $els[0].value );
+            } else {
+                console.log("in for loop, else: " + strafpuntenBediening);
+                var i;
+                for(i=0; i<$els.length; ++i) {
+                    if ($els[i].checked) {
+                        strafpuntenBediening += parseFloat( $els[i].value );
+                    }
+                }
+            }
+        }
+        
+        console.log(strafpuntenBediening);
+        var scoreBediening = Math.round( (8-strafpuntenBediening) / 8 * 100 );
+        
+        document.getElementById("bediening").innerHTML = scoreBediening;
+    }
+</script> 
+
+</body>
+</html>
